@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+<div class="container">
 <h1>User</h1>
 <table class="table">
     <thead>
@@ -21,5 +22,6 @@
 
     </tbody>
 </table>
+</div>
 @endsection
 
