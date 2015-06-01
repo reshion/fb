@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -10,98 +10,98 @@ use \Illuminate\Support\Facades\Auth;
 //use Illuminate\Http\Request;
 use Request;
 
-class UserController extends Controller
-    {
-
-    public function __construct()
+    class UserController extends Controller
         {
-        $this->middleware('auth');
-        }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-        {
-        $user = Auth::user();
-        if (!$user->is('admin'))
+        public function __construct ()
             {
-            return redirect('home');
-            return redirect('/');
+            $this->middleware ('auth');
             }
-        return view('be/user/list', array("users" => User::all()));
-        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-        {
-        //
-        }
+        /**
+         * Display a listing of the resource.
+         *
+         * @return Response
+         */
+        public function index ()
+            {
+            $user = Auth::user ();
+            if (!$user->is ('admin'))
+                {
+                return redirect ('home');
+                }
+            return view ('be/user/list', array ("users" => User::all ()));
+            }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-        {
-        //
-        }
+        /**
+         * Show the form for creating a new resource.
+         *
+         * @return Response
+         */
+        public function create ()
+            {
+            //
+            }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-        {
-        //
-        }
+        /**
+         * Store a newly created resource in storage.
+         *
+         * @return Response
+         */
+        public function store ()
+            {
+            //
+            }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-        {
-        $user = User::find($id);
-        $test = $user->level();
-        return view('be/user/edit', array("user" => User::find($id)));
-        }
+        /**
+         * Display the specified resource.
+         *
+         * @param  int  $id
+         * @return Response
+         */
+        public function show ($id)
+            {
+            //
+            }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request)
-        {
-        $user = User::find($request::input('id'));
-        $user->name = $request::input('name');
-        $user->email = $request::input('email');
-        $user->save();
-        return view('be/user/edit', array("user" => $user));
-        }
+        /**
+         * Show the form for editing the specified resource.
+         *
+         * @param  int  $id
+         * @return Response
+         */
+        public function edit ($id)
+            {
+            $user = User::find ($id);
+            $test = $user->level ();
+            return view ('be/user/edit', array ("user" => User::find ($id)));
+            }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-        {
-        //
-        }
+        /**
+         * Update the specified resource in storage.
+         *
+         * @param  int  $id
+         * @return Response
+         */
+        public function update (Request $request)
+            {
+            $user = User::find ($request::input ('id'));
+            $user->name = $request::input ('name');
+            $user->email = $request::input ('email');
+            $user->save ();
+            return view ('be/user/edit', array ("user" => $user));
+            }
 
-    }
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  int  $id
+         * @return Response
+         */
+        public function destroy ($id)
+            {
+            //
+            }
+
+        }
+    

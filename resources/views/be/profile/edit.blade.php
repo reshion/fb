@@ -1,8 +1,8 @@
 @extends('app')
 @section('content')
 <div class="container">
-    <h1>Edit User</h1>
-    <form action="{{ url('user/update')}}" method="POST">
+    <h1>Edit Profile</h1>
+    <form action="{{ url('profile/update')}}" method="POST">
         <div class="form-group">
             <label for="usr">Name:</label>
             <input id="usr" type="text" name="name" class="form-control" value="{{$user->name}}" >
@@ -17,4 +17,3 @@
     </form>
 </div>
 @endsection
-

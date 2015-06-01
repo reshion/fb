@@ -16,6 +16,10 @@
 				display: table;
 				font-weight: 100;
 				font-family: 'Lato';
+                                
+                     background-image: url('images/landing.png');
+                     background-repeat: no-repeat; 
+                      background-position: center center;
 			}
 
 			.container {
@@ -40,8 +44,8 @@
 		</style>
 	</head>
 	<body>
-		<div class="container">
-			<div class="content">
+		<div class="container " >
+                    <div class="content" >
 				<div class="title">Fishbook</div>
 				@if (Auth::guest())
 						<a class="btn btn-default btn-success btn-block" href="{{ url('/auth/login') }}">Login</a>
@@ -49,6 +53,8 @@
 					
 					@endif
 			</div>
+            
+            </div>
 		</div>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>

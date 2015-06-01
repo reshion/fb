@@ -3,6 +3,7 @@
 use App\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
+use Bican\Roles\Models\Role;
 
 class Registrar implements RegistrarContract {
 
@@ -29,11 +30,13 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-		return User::create([
+		$user = User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
 		]);
+              $user->attachRole(4); // 4 => User Role
+              return $user;
 	}
 
 }
