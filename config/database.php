@@ -56,8 +56,8 @@ return [
 			'driver'    => 'mysql',
 			'host'      => env('DB_HOST', 'localhost'),
 			'host'      => 'localhost',
-			'database'  => env('DB_DATABASE', 'laravel5'),
-			'database'  => 'laravel5',
+			'database'  => env('DB_DATABASE', 'fishbook'), // laravel5
+			'database'  => 'fishbook', // laravel5
 			'username'  => env('DB_USERNAME', 'root'),
 			'username'  => 'root',
 			'password'  => env('DB_PASSWORD', ''),

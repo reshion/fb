@@ -1412,7 +1412,7 @@ html {
 /* line 27, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\scaffolding.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/scaffolding\.less}line{font-family:\0000327}}
 body {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
@@ -1431,14 +1431,14 @@ textarea {
 /* line 48, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\scaffolding.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/scaffolding\.less}line{font-family:\0000348}}
 a {
-  color: #b4b4b4;
+  color: #337ab7;
   text-decoration: none;
 }
 /* line 52, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\scaffolding.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/scaffolding\.less}line{font-family:\0000352}}
 a:hover,
 a:focus {
-  color: #8e8e8e;
+  color: #23527c;
   text-decoration: underline;
 }
 /* line 58, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\scaffolding.less */
@@ -4099,7 +4099,7 @@ select[multiple].form-group-lg .form-control {
 .btn {
   display: inline-block;
   margin-bottom: 0;
-  font-weight: 300;
+  font-weight: normal;
   text-align: center;
   vertical-align: middle;
   touch-action: manipulation;
@@ -4490,7 +4490,7 @@ fieldset[disabled] .btn-danger.active {
 /* line 88, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\buttons.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/buttons\.less}line{font-family:\0000388}}
 .btn-link {
-  color: #b4b4b4;
+  color: #337ab7;
   font-weight: normal;
   border-radius: 0;
 }
@@ -4517,7 +4517,7 @@ fieldset[disabled] .btn-link {
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/buttons\.less}line{font-family:\00003107}}
 .btn-link:hover,
 .btn-link:focus {
-  color: #8e8e8e;
+  color: #23527c;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -5301,7 +5301,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eeeeee;
-  border-color: #b4b4b4;
+  border-color: #337ab7;
 }
 /* line 59, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\navs.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/navs\.less}line{font-family:\0000359}}
@@ -6324,7 +6324,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 6px 12px;
   line-height: 1.42857143;
   text-decoration: none;
-  color: #b4b4b4;
+  color: #337ab7;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   margin-left: -1px;
@@ -6350,7 +6350,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  color: #8e8e8e;
+  color: #23527c;
   background-color: #eeeeee;
   border-color: #dddddd;
 }
@@ -6619,7 +6619,7 @@ a.badge:focus {
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/badges\.less}line{font-family:\0000347}}
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: #b4b4b4;
+  color: #337ab7;
   background-color: #ffffff;
 }
 /* line 52, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\badges.less */
@@ -6720,7 +6720,7 @@ a.badge:focus {
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
-  border-color: #b4b4b4;
+  border-color: #337ab7;
 }
 /* line 32, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\thumbnails.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/thumbnails\.less}line{font-family:\0000332}}
@@ -7991,7 +7991,7 @@ button.close {
   z-index: 1070;
   display: block;
   visibility: visible;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
   line-height: 1.4;
@@ -8130,7 +8130,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.42857143;
@@ -8968,110 +8968,4 @@ button.close {
   .hidden-print {
     display: none !important;
   }
-}
-/* line 6, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\000036}}
-body,
-label,
-.checkbox label {
-  font-weight: 300;
-}
-/* Background Colors */
-/* Link und Button Colors */
-/* Media Queries definition*/
-/* line 40, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000340}}
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: #ffffff;
-}
-/* line 45, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000345}}
-html #wrapper,
-body #wrapper {
-  min-height: 100%;
-  position: relative;
-}
-/* line 49, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000349}}
-html #wrapper .btn-success,
-body #wrapper .btn-success {
-  background-color: #70b870;
-}
-/* line 52, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000352}}
-html #wrapper .btn-primary,
-body #wrapper .btn-primary {
-  background-color: #5ebfff;
-}
-@media only screen and (min-width: 768px) {
-  /* line 58, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000358}}
-  html #wrapper header,
-  body #wrapper header {
-    height: 250px;
-    background-image: url('../images/nav-bg.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-}
-/* line 65, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000365}}
-html #wrapper .navbar,
-body #wrapper .navbar {
-  border: 0px;
-  margin-bottom: 0px;
-}
-/* line 68, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000368}}
-html #wrapper .navbar .container-fluid,
-body #wrapper .navbar .container-fluid {
-  background-color: #323232;
-}
-/* line 73, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000373}}
-html #wrapper .navbar .navbar-nav li a,
-body #wrapper .navbar .navbar-nav li a {
-  color: #b4b4b4;
-}
-/* line 75, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000375}}
-html #wrapper .navbar .navbar-nav li a:hover,
-body #wrapper .navbar .navbar-nav li a:hover {
-  color: #e6e6e6;
-  background-color: #464646;
-}
-/* line 82, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000382}}
-html #wrapper .navbar .navbar-nav .open a,
-body #wrapper .navbar .navbar-nav .open a {
-  background-color: #323232;
-}
-/* line 87, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000387}}
-html #wrapper .navbar .dropdown-menu,
-body #wrapper .navbar .dropdown-menu {
-  border: 0px;
-  background-color: #323232;
-}
-/* line 92, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000392}}
-html #wrapper .content,
-body #wrapper .content {
-  min-height: 100%;
-  padding: 50px;
-}
-/* line 97, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000397}}
-html #wrapper footer,
-body #wrapper footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
-  background-color: #323232;
-  left: 0;
 }

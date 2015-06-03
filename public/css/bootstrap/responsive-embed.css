@@ -1,0 +1,34 @@
+/* line 5, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\responsive-embed.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/responsive-embed\.less}line{font-family:\000035}}
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+/* line 12, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\responsive-embed.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/responsive-embed\.less}line{font-family:\0000312}}
+.embed-responsive .embed-responsive-item,
+.embed-responsive iframe,
+.embed-responsive embed,
+.embed-responsive object,
+.embed-responsive video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  border: 0;
+}
+/* line 27, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\responsive-embed.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/responsive-embed\.less}line{font-family:\0000327}}
+.embed-responsive.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+}
+/* line 32, F:\T4M Projects\fishbook\resources\assets\less\bootstrap\responsive-embed.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/bootstrap\/responsive-embed\.less}line{font-family:\0000332}}
+.embed-responsive.embed-responsive-4by3 {
+  padding-bottom: 75%;
+}

@@ -35,7 +35,7 @@ class Registrar implements RegistrarContract {
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
 		]);
-              $user->attachRole(4); // 4 => User Role
+//              $user->attachRole(4); // 4 => User Role
               return $user;
 	}
 
