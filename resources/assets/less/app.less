@@ -5,7 +5,7 @@
 
 body, label, .checkbox label {
     font-weight: 300;
-    
+
 }
 /* Background Colors */
 @general-background: rgb(255,255,255);
@@ -45,14 +45,14 @@ html,body {
     #wrapper {
 	min-height: 100%;
 	position: relative;
-	
+
 	.btn-success {
 	    background-color: @btn-success ;
 	}
 	.btn-primary {
 	    background-color: @btn-primary ;
 	}
-	
+
 	header {
 
 	    @media @tablet {
@@ -65,8 +65,11 @@ html,body {
 	.navbar {
 	    border: 0px;
 	    margin-bottom: 0px;
-	    .container-fluid {
-		background-color: @black-one;
+	    background-color: @black-one;
+	    opacity: 0.9;
+	    z-index: 10001;
+	    @media @tablet { 
+		margin-top: -50px;
 	    }
 	    .navbar-nav {
 		li {
@@ -93,6 +96,7 @@ html,body {
 	    //background-color: #aaa;
 	    min-height: 100%;
 	    padding: 50px;
+	    z-index: 10000;
 	}
 	footer {
 	    position: absolute;

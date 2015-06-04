@@ -1,4 +1,4 @@
-var elixir = require('laravel-elixir');
+//var elixir = require('laravel-elixir');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,6 +11,33 @@ var elixir = require('laravel-elixir');
  |
  */
 
-elixir(function(mix) {
-    mix.less('app.less');
+//elixir(function(mix) {
+//    mix.less('app.less');
+//});
+var gulp = require('gulp');
+var less = require('gulp-less');
+var minifyCss = require('gulp-minify-css');
+var lr = require('tiny-lr');
+var refresh = require('gulp-livereload');
+var server = lr(); 
+var autoPrefixer = require('gulp-autoprefixer');
+
+gulp.task('default', function() {
+    // place code for your default task here
 });
+
+
+gulp.task('minify-css', function() {
+    return gulp.src('public/css/*.css')
+	.pipe(minifyCss({compatibility: 'ie8'}))
+	.pipe(gulp.dest('public/css/min'));
+});
+gulp.task('styles', function() {
+    gulp.src(['resources/assets/less/app.less'])
+	.pipe(less())
+	.pipe(minifyCss())
+//        .pipe(autoPrefixer())
+	.pipe(gulp.dest('public/css/'))
+	.pipe(refresh(server))
+})
+

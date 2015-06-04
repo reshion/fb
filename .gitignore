@@ -1,3 +1,4 @@
 auth.json
 database/seeds/
 /nbproject/private/
+node_modules

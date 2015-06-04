@@ -9024,54 +9024,48 @@ html #wrapper .navbar,
 body #wrapper .navbar {
   border: 0px;
   margin-bottom: 0px;
+}
+/* line 68, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000368}}
+html #wrapper .navbar .container-fluid,
+body #wrapper .navbar .container-fluid {
   background-color: #323232;
-  opacity: 0.9;
-  z-index: 10001;
 }
-@media only screen and (min-width: 768px) {
-  /* line 71, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000371}}
-  html #wrapper .navbar,
-  body #wrapper .navbar {
-    margin-top: -50px;
-  }
-}
-/* line 76, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000376}}
+/* line 73, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000373}}
 html #wrapper .navbar .navbar-nav li a,
 body #wrapper .navbar .navbar-nav li a {
   color: #b4b4b4;
 }
-/* line 78, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000378}}
+/* line 75, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000375}}
 html #wrapper .navbar .navbar-nav li a:hover,
 body #wrapper .navbar .navbar-nav li a:hover {
   color: #e6e6e6;
   background-color: #464646;
 }
-/* line 85, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000385}}
+/* line 82, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000382}}
 html #wrapper .navbar .navbar-nav .open a,
 body #wrapper .navbar .navbar-nav .open a {
   background-color: #323232;
 }
-/* line 90, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000390}}
+/* line 87, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000387}}
 html #wrapper .navbar .dropdown-menu,
 body #wrapper .navbar .dropdown-menu {
   border: 0px;
   background-color: #323232;
 }
-/* line 95, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000395}}
+/* line 92, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000392}}
 html #wrapper .content,
 body #wrapper .content {
   min-height: 100%;
   padding: 50px;
-  z-index: 10000;
 }
-/* line 101, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003101}}
+/* line 97, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000397}}
 html #wrapper footer,
 body #wrapper footer {
   position: absolute;
