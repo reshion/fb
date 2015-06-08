@@ -10,15 +10,11 @@ app.directive('geoLocation', function($window) {
                 $window.navigator.geolocation.getCurrentPosition(function(position) {
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
+                    var newLatLng = new google.maps.LatLng(lat, lng)
                     scope.internCoords.lng = lng;
                     scope.internCoords.lat = lat;
                     scope.$apply();
                     
-                    function setCoords(lat,lng) {
-                        element.find('#latitude').text(lat);
-                        element.find('#longitude').text(lng);
-                    }
-                    setCoords(lat,lng);
                     var myLatlng = new google.maps.LatLng(lat,lng );
 
                     var mapOptions = {
@@ -31,6 +27,27 @@ app.directive('geoLocation', function($window) {
                         map: map,
                         title: 'There you are!'
                     });
+                    scope.$watchCollection('internCoords.lng', function(newValue,oldValue){
+                        if(newValue) {
+                            newLatLng = new google.maps.LatLng(lat, newValue)
+                            marker.setPosition(newLatLng);
+                            map.setCenter(newLatLng);
+                            setCoords(lat,newValue);
+                        }
+                    }, true)
+                    scope.$watchCollection('internCoords.lat', function(newValue,oldValue){
+                        if(newValue) {
+                            newLatLng = new google.maps.LatLng(newValue, lng)
+                            marker.setPosition(newLatLng);
+                            map.setCenter(newLatLng);
+                            setCoords(newValue,lng);
+                        }
+                    }, true)
+                    function setCoords(lat,lng) {
+                        element.find('#latitude').text(lat);
+                        element.find('#longitude').text(lng);
+                    }
+                    setCoords(lat,lng);
                     google.maps.event.addListener(map, "mousedown", function(event) {
                         lat = event.latLng.lat();
                         lng = event.latLng.lng();
@@ -38,7 +55,7 @@ app.directive('geoLocation', function($window) {
                         scope.internCoords.lat = lat;
                         scope.$apply();
                         // populate yor box/field with lat, lng
-                        var newLatLng = new google.maps.LatLng(lat, lng)
+                        newLatLng = new google.maps.LatLng(lat, lng)
                         marker.setPosition(newLatLng);
                         map.setCenter(newLatLng);
                         setCoords(lat,lng);
