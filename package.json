@@ -3,10 +3,11 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "laravel-elixir": "*",
-    "gulp-minify-css": "^1.1.5",
+    "gulp-minify-css": "^1.1.6",
     "gulp-less": "^3.0.3",
     "tiny-lr": "^0.1.5",
     "gulp-autoprefixer": "^2.3.1",
-    "gulp-livereload": "^3.8.0"
+    "gulp-livereload": "^3.8.0",
+    "gulp-util": "^3.0.5"
   }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="App">
     <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,10 +19,10 @@
 	<![endif]-->
 
     </head>
-    <body>
+    <body data-ng-controller="MainController">
 	<div id="wrapper">
 	    <header>
-
+                
 	    </header>
 	    
 	    <nav class="navbar navbar-default ">
@@ -63,8 +63,11 @@
 		</div>
 	    </nav>
 	    
+            
+            
 	    <div class="content">
 		@yield('content')
+                
 	    </div>
 	    <footer>
 
@@ -74,6 +77,14 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCHIpr5MxgE7hCU-OP98fXX1cGM9k_rF_4"></script>
+        <script type="text/javascript">
+
+    </script>
+
+        <script src="{{ asset('js/App.js') }}"></script>
+        <script src="{{ asset('js/Controller/MainController.js') }}"></script>
+        <script src="{{ asset('js/Directives/GeoLocation.js') }}"></script>
         <style>
             * {
                 border-radius: 0px !important;
