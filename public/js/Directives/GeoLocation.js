@@ -14,8 +14,8 @@ app.directive('geoLocation', function($window) {
                     scope.internCoords.lng = lng;
                     scope.internCoords.lat = lat;
                     scope.$apply();
-                    
-                    var myLatlng = new google.maps.LatLng(lat,lng );
+
+                    var myLatlng = new google.maps.LatLng(lat, lng);
 
                     var mapOptions = {
                         center: myLatlng,
@@ -27,41 +27,45 @@ app.directive('geoLocation', function($window) {
                         map: map,
                         title: 'There you are!'
                     });
-                    scope.$watchCollection('internCoords.lng', function(newValue,oldValue){
-                        if(newValue) {
+
+                    // Watch for Controller Changes
+                    scope.$watchCollection('internCoords.lng', function(newValue, oldValue) {
+                        if (newValue) {
                             newLatLng = new google.maps.LatLng(lat, newValue)
                             marker.setPosition(newLatLng);
                             map.setCenter(newLatLng);
-                            setCoords(lat,newValue);
+                            setCoords(lat, newValue);
                         }
                     }, true)
-                    scope.$watchCollection('internCoords.lat', function(newValue,oldValue){
-                        if(newValue) {
+
+                    scope.$watchCollection('internCoords.lat', function(newValue, oldValue) {
+                        if (newValue) {
                             newLatLng = new google.maps.LatLng(newValue, lng)
                             marker.setPosition(newLatLng);
                             map.setCenter(newLatLng);
-                            setCoords(newValue,lng);
+                            setCoords(newValue, lng);
                         }
                     }, true)
-                    function setCoords(lat,lng) {
+
+                    function setCoords(lat, lng) {
                         element.find('#latitude').text(lat);
                         element.find('#longitude').text(lng);
                     }
-                    setCoords(lat,lng);
+                    setCoords(lat, lng);
+
+                    // set Position on click
                     google.maps.event.addListener(map, "mousedown", function(event) {
                         lat = event.latLng.lat();
                         lng = event.latLng.lng();
-                        scope.internCoords.lng = lng;
-                        scope.internCoords.lat = lat;
-                        scope.$apply();
-                        // populate yor box/field with lat, lng
-                        newLatLng = new google.maps.LatLng(lat, lng)
-                        marker.setPosition(newLatLng);
-                        map.setCenter(newLatLng);
-                        setCoords(lat,lng);
+                        // set Controller Scope 
+                        // Controller scope changes affects to directive scope by watchCollection
+                        setTimeout(function() {
+                            scope.internCoords.lng = lng;
+                            scope.internCoords.lat = lat;
+                            scope.$apply();
+                        }, 1000);
+                        setCoords(lat, lng);
                     });
-
-
 
                 }, function(error) {
                     element.text("Your geolocation is not available");
