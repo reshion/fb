@@ -6267,6 +6267,17 @@ body {
   padding: 0;
   height: 100%;
   background-color: #ffffff;
+  /*    .application-data {
+	padding-top: 50px;
+	bottom: @footer-height;
+    }*/
+  /*    footer {
+	bottom: 0;
+	width: 100%;
+	height: @footer-height;
+	background-color: @black-one;
+	left:0;
+    }*/
 }
 html #wrapper,
 body #wrapper {
@@ -6355,20 +6366,6 @@ body #wrapper .content {
     padding-top: 50px;
   }
 }
-html #wrapper .application-data,
-body #wrapper .application-data {
-  position: absolute;
-  bottom: 50px;
-}
-html #wrapper footer,
-body #wrapper footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
-  background-color: #323232;
-  left: 0;
-}
 html #wrapper .coords-block,
 body #wrapper .coords-block {
   background-color: #323232;
@@ -6380,6 +6377,12 @@ body #wrapper .coords-block {
 html #wrapper .coords-block #map-canvas,
 body #wrapper .coords-block #map-canvas {
   height: 200px;
+}
+@media only screen and (min-width: 768px) {
+  html #wrapper .coords-block #map-canvas,
+  body #wrapper .coords-block #map-canvas {
+    height: 400px;
+  }
 }
 @-webkit-keyframes animate-loading {
   0% {

@@ -73,16 +73,7 @@
 		@yield('content')
                 
 	    </div>
-	    <section class="application-data">
-		<div>
-		    ctrl catitude: </span><span data-ng-bind="coords.lat"></span> - ctrl congitude: </span><span data-ng-bind="coords.lng"></span>
-		</div>
-	    </section>
-	    <footer>
-
-	    </footer>
 	</div>
-	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>

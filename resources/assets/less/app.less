@@ -78,22 +78,12 @@ html,body {
 	    @media @tablet {
 		padding-top: 50px;
 	    }
+
 	    padding-top: 10px;
 	    min-height: 100%;
 	    z-index: 10000;
 	}
-	.application-data {
-	    position: absolute;
-	    bottom: @footer-height;
-	}
-	footer {
-	    position: absolute;
-	    bottom: 0;
-	    width: 100%;
-	    height: @footer-height;
-	    background-color: @black-one;
-	    left:0;
-	}
+
 	.coords-block {
 	    background-color: @black-one;
 	    color: @link-color;
@@ -101,10 +91,24 @@ html,body {
 	    font-family: @font-family-sans-serif;
 	    font-size: @font-size-xs;
 	    #map-canvas {
+		@media @tablet {
+		    height: 400px;
+		}
 		height: 200px;
 	    }
 	}
     }
+/*    .application-data {
+	padding-top: 50px;
+	bottom: @footer-height;
+    }*/
+/*    footer {
+	bottom: 0;
+	width: 100%;
+	height: @footer-height;
+	background-color: @black-one;
+	left:0;
+    }*/
 } 
 
 
