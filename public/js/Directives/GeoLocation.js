@@ -1,7 +1,7 @@
 app.directive('geoLocation', function($window) {
     return {
         restrict: "E",
-        template: '<div>latitude:<span id="latitude"></span><br>longitude: <span data-ng-bind="coords.lng" id="longitude"></span></div><div style="width:250px; height: 200px;" id="map-canvas"></div>',
+        template: '<div>latitude:<span id="latitude"></span><br>longitude: <span data-ng-bind="coords.lng" id="longitude"></span></div><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 200px;" id="map-canvas"></div>',
         scope: {
             internCoords: '=interncoords'
         },

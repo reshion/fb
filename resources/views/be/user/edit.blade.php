@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="">
 	    <h1>Edit User</h1>
 	    <form action="{{ url('user/update')}}" method="POST">
 		<div class="form-group">
