@@ -6274,12 +6274,17 @@ body {
   display: table;
   font-weight: 100;
   font-family: 'Lato';
-  background-image: url('../images/landing.png');
-  background-repeat: no-repeat;
-  background-position: center center;
+  background-color: #000;
   /*	text-align: center;
-	display: table-cell;
-	vertical-align: middle;*/
+            display: table-cell;
+            vertical-align: middle;*/
+}
+@media only screen and (min-width: 768px) {
+  body {
+    background-image: url('../images/landing.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 }
 body .content {
   text-align: center;
