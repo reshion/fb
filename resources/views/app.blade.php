@@ -62,7 +62,7 @@
 		    </div>
 		</div>
 	    </nav>
-	    <div data-ng-show="loading" class="loading">
+	    <div data-ng-if="loading" class="loading">
 		<div class="inner-loading">
 		    &nbsp;
 		</div>
@@ -73,6 +73,11 @@
 		@yield('content')
                 
 	    </div>
+	    <section class="application-data">
+		<div>
+		    ctrl catitude: </span><span data-ng-bind="coords.lat"></span> - ctrl congitude: </span><span data-ng-bind="coords.lng"></span>
+		</div>
+	    </section>
 	    <footer>
 
 	    </footer>
@@ -89,6 +94,7 @@
         <script src="{{ asset('js/App.js') }}"></script>
         <script src="{{ asset('js/Controller/MainController.js') }}"></script>
         <script src="{{ asset('js/Directives/GeoLocation.js') }}"></script>
+        <script src="{{ asset('js/animate.js') }}"></script>
         <style>
             * {
                 border-radius: 0px !important;

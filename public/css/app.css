@@ -6255,6 +6255,7 @@ and open the template in the editor.
 /* Link und Button Colors */
 /* Font Style */
 /* Media Queries definition*/
+/* height */
 body,
 label,
 .checkbox label {
@@ -6354,6 +6355,11 @@ body #wrapper .content {
     padding-top: 50px;
   }
 }
+html #wrapper .application-data,
+body #wrapper .application-data {
+  position: absolute;
+  bottom: 50px;
+}
 html #wrapper footer,
 body #wrapper footer {
   position: absolute;
@@ -6370,6 +6376,10 @@ body #wrapper .coords-block {
   padding: 5px;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: 0.7em;
+}
+html #wrapper .coords-block #map-canvas,
+body #wrapper .coords-block #map-canvas {
+  height: 200px;
 }
 @-webkit-keyframes animate-loading {
   0% {
