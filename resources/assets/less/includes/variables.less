@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10.06.2015, 15:10:59
+    Author     : rico.mutze
+*/
+@btn-font-weight: 300;
+@font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
+
+/* Background Colors */
+@general-background: rgb(255,255,255);
+@black-one: rgba(50,50,50,1);
+@black-two: rgba(70,70,70,1);
+
+/* Link und Button Colors */
+@btn-success: rgba(112, 184, 112, 1);
+@btn-primary: rgba(94, 191, 255, 1);
+
+@link-color: rgba(180,180,180,1);
+@link-color-active: rgba(230,230,230,1);
+
+/* Font Style */
+@font-size-xs: 0.7em;
+@font-size-sm: 0.8em;
+@font-size-md: 1em;
+@font-size-lg: 1.4em;
+
+@font-size-l: 4em;
+@font-size-xl: 6em;
+@font-size-xxl: 8em;
+
+/* Media Queries definition*/
+@xs-min: 480px;
+@sm-min: 768px;
+@md-min: 992px;
+@lg-min: 1200px;
+
+@xs-max: (@sm-min - 1);
+@sm-max: (@md-min - 1);
+@md-max: (@lg-min - 1);
+
+@phone:          ~"only screen and (min-width: @{xs-min})";
+@phone-strict:   ~"only screen and (min-width: @{xs-min}) and (max-width: @{xs-max})";
+@tablet:         ~"only screen and (min-width: @{sm-min})";
+@tablet-strict:  ~"only screen and (min-width: @{sm-min}) and (max-width: @{sm-max})";
+@desktop:        ~"only screen and (min-width: @{md-min})";
+@desktop-strict: ~"only screen and (min-width: @{md-min}) and (max-width: @{md-max})";
+@large:          ~"only screen and (min-width: @{lg-min})";

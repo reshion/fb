@@ -35,7 +35,12 @@ gulp.task('minify-css', function() {
 gulp.task('styles', function() {
     gulp.src(['resources/assets/less/app.less'])
 	.pipe(less())
-	.pipe(minifyCss())
+//	.pipe(minifyCss())
+        .pipe(autoPrefixer())
+	.pipe(gulp.dest('public/css/'))
+    gulp.src(['resources/assets/less/welcome.less'])
+	.pipe(less())
+//	.pipe(minifyCss())
         .pipe(autoPrefixer())
 	.pipe(gulp.dest('public/css/'))
 //	.pipe(refresh(server))
