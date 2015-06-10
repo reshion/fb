@@ -3,3 +3,4 @@ database/seeds/
 /nbproject/private/
 node_modules
 config
+.env

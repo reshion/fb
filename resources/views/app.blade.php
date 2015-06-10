@@ -62,7 +62,7 @@
 		    </div>
 		</div>
 	    </nav>
-	    <div data-ng-if="loading" class="loading">
+	    <div data-ng-if="loading.length > 0" class="loading">
 		<div class="inner-loading">
 		    &nbsp;
 		</div>
@@ -84,7 +84,10 @@
 
         <script src="{{ asset('js/App.js') }}"></script>
         <script src="{{ asset('js/Controller/MainController.js') }}"></script>
-        <script src="{{ asset('js/Directives/GeoLocation.js') }}"></script>
+        <script src="{{ asset('js/Directives/GeoLocationDirective.js') }}"></script>
+        <script src="{{ asset('js/Directives/WeatherDirective.js') }}"></script>
+        <script src="{{ asset('js/Services/WeatherService.js') }}"></script>
+        
         <script src="{{ asset('js/animate.js') }}"></script>
         <style>
             * {
