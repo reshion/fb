@@ -1,13 +1,16 @@
-app.directive('geoLocation', function($window) {
+app.directive('geoLocation', function($window,$rootScope) {
     return {
         restrict: "E",
-        template: '<div>latitude:<span id="latitude"></span><br>longitude: <span data-ng-bind="coords.lng" id="longitude"></span></div><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 200px;" id="map-canvas"></div>',
+//        template: '<div>latitude:<span id="latitude"></span><br>longitude: <span data-ng-bind="coords.lng" id="longitude"></span></div><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 200px;" id="map-canvas"></div>',
+        templateUrl: 'templates/GeoLocation.html',
         scope: {
             internCoords: '=interncoords'
         },
         link: function(scope, element, attrs) {
             if ($window.navigator && $window.navigator.geolocation) {
+		$rootScope.loading = true;
                 $window.navigator.geolocation.getCurrentPosition(function(position) {
+		    $rootScope.loading = false;
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
                     var newLatLng = new google.maps.LatLng(lat, lng)

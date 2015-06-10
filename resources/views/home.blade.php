@@ -5,8 +5,9 @@
     <div class="row">
 	<div class="">
 	    <h1>Home</h1>
-            <span>Ctrl Latitude: </span><span data-ng-bind="coords.lat"></span><br>
-            <span>Ctrl Longitude: </span><span data-ng-bind="coords.lng"></span>
+	    <div>
+		ctrl catitude: </span><span data-ng-bind="coords.lat"></span> - ctrl congitude: </span><span data-ng-bind="coords.lng"></span>
+	    </div>
             <geo-location interncoords="coords"></geo-location>
 	</div>
     </div>

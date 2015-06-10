@@ -62,7 +62,11 @@
 		    </div>
 		</div>
 	    </nav>
-	    
+	    <div data-ng-show="loading" class="loading">
+		<div class="inner-loading">
+		    &nbsp;
+		</div>
+	    </div>
             
             
 	    <div class="container content">
