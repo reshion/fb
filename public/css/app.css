@@ -6268,8 +6268,17 @@ body {
   height: 100%;
   background-color: #ffffff;
 }
+html .overlay,
+body .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(200, 200, 200, 0.2);
+  z-index: 10000001;
+}
 html #wrapper,
 body #wrapper {
+  z-index: 10000000;
   min-height: 100%;
   position: relative;
 }

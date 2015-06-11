@@ -20,6 +20,9 @@
 
     </head>
     <body data-ng-controller="MainController">
+<!--	<div class="overlay" data-ng-if="loading.length > 0">
+	    
+	</div>-->
 	<div id="wrapper">
 	    <header>
                 
