@@ -9107,90 +9107,100 @@ body #wrapper .content {
   @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000378}}
   html #wrapper .content,
   body #wrapper .content {
-    padding-top: 50px;
+    padding-top: 50px 15px;
   }
 }
-/* line 88, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000388}}
+/* line 85, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000385}}
 html #wrapper .content .panel,
 body #wrapper .content .panel {
   border: 0px;
   padding: 0px 0px;
   margin: 0;
-  /*
-*/
 }
-@media only screen and (min-width: 480px) {
-  /* line 90, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000390}}
+@media only screen and (min-width: 768px) {
+  /* line 87, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000387}}
   html #wrapper .content .panel,
   body #wrapper .content .panel {
     padding: 0px 15px;
   }
 }
-/* line 95, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000395}}
+/* line 92, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000392}}
 html #wrapper .content .panel .panel-heading,
 body #wrapper .content .panel .panel-heading {
   background-color: #323232;
   color: #b4b4b4;
   border: 0px;
 }
-/* line 99, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000399}}
-html #wrapper .content .panel .panel-heading:hover,
-body #wrapper .content .panel .panel-heading:hover {
+/* line 98, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\0000398}}
+html #wrapper .content .panel .action:hover,
+body #wrapper .content .panel .action:hover {
   cursor: pointer;
   color: #e6e6e6;
   background-color: #464646;
 }
-/* line 105, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003105}}
+/* line 104, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003104}}
+html #wrapper .content .panel .control,
+body #wrapper .content .panel .control {
+  padding: 0;
+}
+/* line 106, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003106}}
+html #wrapper .content .panel .control .action,
+body #wrapper .content .panel .control .action {
+  padding: 10px;
+}
+/* line 110, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003110}}
 html #wrapper .content .panel .panel-body,
 body #wrapper .content .panel .panel-body {
   padding: 0px;
 }
-/* line 113, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003113}}
+/* line 118, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003118}}
 html #wrapper .coords-block #map-canvas,
 body #wrapper .coords-block #map-canvas {
   height: 200px;
 }
 @media only screen and (min-width: 768px) {
-  /* line 114, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003114}}
+  /* line 119, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003119}}
   html #wrapper .coords-block #map-canvas,
   body #wrapper .coords-block #map-canvas {
     height: 400px;
   }
 }
 @keyframes animate-loading {
-  /* line 125, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003125}}
+  /* line 130, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003130}}
   0% {
     left: 0;
     opacity: 0.5;
   }
-  /* line 126, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003126}}
+  /* line 131, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003131}}
   25% {
     left: 25%;
     opacity: 1;
   }
-  /* line 127, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003127}}
+  /* line 132, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003132}}
   50% {
     left: 50%;
     opacity: 0.5;
   }
-  /* line 128, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003128}}
+  /* line 133, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003133}}
   75% {
     left: 25%;
     opacity: 1;
   }
-  /* line 129, F:\T4M Projects\fishbook\resources\assets\less\app.less */
-  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003129}}
+  /* line 134, F:\T4M Projects\fishbook\resources\assets\less\app.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/T4M Projects\/fishbook\/resources\/assets\/less\/app\.less}line{font-family:\00003134}}
   100% {
     left: 0;
     opacity: 0.5;

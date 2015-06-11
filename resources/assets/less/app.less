@@ -76,18 +76,15 @@ html,body {
 	}
 	.content {
 	    @media @tablet {
-		padding-top: 50px;
+		padding-top: 50px 15px;;
 	    }
-	    @media @phone {
-		}
 	    padding: 0px 0px;
-
 	    padding-top: 10px;
 	    min-height: 100%;
 	    z-index: 10000;
 	    .panel {
 		border: 0px;
-		@media @phone {
+		@media @tablet {
 		    padding: 0px 15px;
 		}
 		padding: 0px 0px;
@@ -96,13 +93,21 @@ html,body {
 		    background-color: @black-one;
 		    color: @link-color;
 		    border: 0px;
+		    }
+		.action {
 		    &:hover {
 			cursor: pointer;
 			color: @link-color-active;
 			background-color: @black-two;
 		    }
-		}/*
-*/		.panel-body {
+		}
+		.control {
+		    padding: 0;
+		    .action {
+			padding: 10px;
+		    }
+		}
+		.panel-body {
 		    padding: 0px;
 		}
 	    }
