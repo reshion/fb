@@ -78,18 +78,38 @@ html,body {
 	    @media @tablet {
 		padding-top: 50px;
 	    }
+	    @media @phone {
+		}
+	    padding: 0px 0px;
 
 	    padding-top: 10px;
 	    min-height: 100%;
 	    z-index: 10000;
+	    .panel {
+		border: 0px;
+		@media @phone {
+		    padding: 0px 15px;
+		}
+		padding: 0px 0px;
+		margin: 0;
+		.panel-heading {
+		    background-color: @black-one;
+		    color: @link-color;
+		    border: 0px;
+		    &:hover {
+			cursor: pointer;
+			color: @link-color-active;
+			background-color: @black-two;
+		    }
+		}/*
+*/		.panel-body {
+		    padding: 0px;
+		}
+	    }
 	}
 
 	.coords-block {
-	    background-color: @black-one;
-	    color: @link-color;
-	    padding: 5px;
-	    font-family: @font-family-sans-serif;
-	    font-size: @font-size-xs;
+
 	    #map-canvas {
 		@media @tablet {
 		    height: 400px;
@@ -98,17 +118,6 @@ html,body {
 	    }
 	}
     }
-/*    .application-data {
-	padding-top: 50px;
-	bottom: @footer-height;
-    }*/
-/*    footer {
-	bottom: 0;
-	width: 100%;
-	height: @footer-height;
-	background-color: @black-one;
-	left:0;
-    }*/
 } 
 
 
