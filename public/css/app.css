@@ -6346,7 +6346,7 @@ body #wrapper .inner-loading {
 html #wrapper .content,
 body #wrapper .content {
   padding: 0px 0px;
-  padding-top: 10px;
+  padding-top: 5px;
   min-height: 100%;
   z-index: 10000;
 }
