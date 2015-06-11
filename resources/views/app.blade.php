@@ -62,7 +62,7 @@
 		    </div>
 		</div>
 	    </nav>
-	    <div data-ng-if="loading.length > 0" class="loading">
+	    <div data-ng-if="loading.length > 0 || true" class="loading">
 		<div class="inner-loading">
 		    &nbsp;
 		</div>
