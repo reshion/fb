@@ -20,6 +20,9 @@
 
     </head>
     <body data-ng-controller="MainController">
+<!--	<div class="overlay" data-ng-if="loading.length > 0">
+	    
+	</div>-->
 	<div id="wrapper">
 	    <header>
                 
@@ -62,7 +65,7 @@
 		    </div>
 		</div>
 	    </nav>
-	    <div data-ng-if="loading.length > 0" class="loading">
+	    <div data-ng-if="loading.length > 0 || true" class="loading">
 		<div class="inner-loading">
 		    &nbsp;
 		</div>

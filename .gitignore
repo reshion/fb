@@ -4,3 +4,4 @@ database/seeds/
 node_modules
 config
 .env
+public/.htaccess

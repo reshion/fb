@@ -1,0 +1,1 @@
+"use strict";var app=angular.module("App",["weatherService","weatherDirective"]).directive("toggleForId",function(e,c){return{scope:{toggleForId:"@"},link:function(e,c,i){c.click(function(){e.clicked=!e.clicked,e.clicked?$("#"+e.toggleForId).hide():$("#"+e.toggleForId).show()})}}});
