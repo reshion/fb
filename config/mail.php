@@ -15,8 +15,14 @@ return [
 	|
 	*/
 
+<<<<<<< HEAD
 	//'driver' => env('MAIL_DRIVER', 'smtp'),
 	'driver' => 'smtp',
+=======
+//	'driver' => env('MAIL_DRIVER', 'smtp'),
+	'driver' => 'smtp',
+
+>>>>>>> 803c71d34969cc499a7dc84c71ba32535d744789
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Address
@@ -28,8 +34,13 @@ return [
 	|
 	*/
 
+<<<<<<< HEAD
 	//'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 	'host' => 'auriga.uberspace.de',
+=======
+	'host' => 'auriga.uberspace.de',
+
+>>>>>>> 803c71d34969cc499a7dc84c71ba32535d744789
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Port
@@ -41,8 +52,13 @@ return [
 	|
 	*/
 
+<<<<<<< HEAD
 	//'port' => env('MAIL_PORT', 587),
 	'port' => 587,
+=======
+	'port' => 143,
+
+>>>>>>> 803c71d34969cc499a7dc84c71ba32535d744789
 	/*
 	|--------------------------------------------------------------------------
 	| Global "From" Address
@@ -54,8 +70,12 @@ return [
 	|
 	*/
 
+<<<<<<< HEAD
 	//'from' => ['address' => null, 'name' => null],
 	'from' => ['address' => 'reshion@auriga.uberspace.de', 'name' => 'Rico Mutze'],
+=======
+	'from' => ['address' => "reshion@auriga.uberspace.de", 'name' => 'Rico Mutze'],
+>>>>>>> 803c71d34969cc499a7dc84c71ba32535d744789
 
 	/*
 	|--------------------------------------------------------------------------
@@ -81,7 +101,10 @@ return [
 	|
 	*/
 
+<<<<<<< HEAD
 	//'username' => env('MAIL_USERNAME'),
+=======
+>>>>>>> 803c71d34969cc499a7dc84c71ba32535d744789
 	'username' => 'reshion',
 
 	/*
@@ -95,8 +118,13 @@ return [
 	|
 	*/
 
+<<<<<<< HEAD
 	//'password' => env('MAIL_PASSWORD'),
 	'password' => 'reshion15051980',
+=======
+	'password' => 'reshion15051980',
+
+>>>>>>> 803c71d34969cc499a7dc84c71ba32535d744789
 	/*
 	|--------------------------------------------------------------------------
 	| Sendmail System Path

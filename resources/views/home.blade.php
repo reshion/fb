@@ -8,6 +8,8 @@
 	
 	
 		<city-weather data-interncoords="coords" data-loading="loading"></city-weather>
+		
+                <water-info data-interncoords="coords" data-loading="loading" data-internradius="radius"></water-info>
 	
 	
     </div>

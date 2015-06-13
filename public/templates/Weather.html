@@ -1,14 +1,79 @@
 <div class="panel panel-default col-lg-6 col-xs-12">
-    <div class="panel-heading action col-lg-6 col-xs-6" data-target="#panel-2" data-toggle="collapse" aria-expanded="false">Weather</div>
+    <div class="panel-heading action col-lg-6 col-xs-6" data-target="#panel-2" data-toggle="collapse" aria-expanded="false">Wetterdaten</div>
     <div class="panel-heading col-lg-6 col-xs-6 control" >&nbsp;
-	<div class="pull-right action "><span class="glyphicon glyphicon-repeat" data-ng-click="refreshWeather()"></span>
-	</div>
+        <div class="pull-right action ">
+            <span class="glyphicon glyphicon-repeat" data-ng-click="refreshWeather()"></span>
+        </div>
+        <div class="pull-right action " data-html="true" data-placement="left" data-animation="am-slide-left" bs-aside="info">
+            <span class="glyphicon glyphicon-info-sign"  ></span>
+
+        </div>
     </div>
 
-    
+
     <div id="panel-2" class="panel-body collapse in">
-	    <h1>Temperature in {{weather.getCityName()}} <img ng-src="{{weather.getIcon()}}" /></h1>
-	    <h3>Current: {{weather.getTemperature()}}&deg;C</h3>
-	    <h4>Min: {{weather.getMinTemperature()}}&deg;C, Max: {{weather.getMaxTemperature()}}&deg;C </h4>
+        <h1>Standort: {{weather.getCityName()}} <img ng-src="{{weather.getIcon()}}" /></h1>
+        <table class="table">
+            <tr>
+                <td>Temperatur </td>
+                <td>{{weather.getTemperature()}} &deg;C</td>
+            </tr>
+            <tr>
+                <td>Min </td>
+                <td>{{weather.getMinTemperature()}} &deg;C</td>
+            </tr>
+            <tr>
+                <td>Max </td>
+                <td>{{weather.getMaxTemperature()}} &deg;C</td>
+            </tr>
+            <tr>
+                <td>Luftfeuchtigkeit </td>
+                <td>{{weather.getHumidity()}} &#037;</td>
+            </tr>
+            <tr>
+                <td>Luftdruck </td>
+                <td>{{weather.getPressure()}} hPa</td>
+            </tr>
+            <tr>
+                <td>Luftdruck (Meeresspiegel)</td>
+                <td>{{weather.getPressureSeaLevel()}} hPa</td>
+            </tr>
+            <tr>
+                <td>Luftdruck (Boden)</td>
+                <td>{{weather.getPressureGroundLevel()}} hPa</td>
+            </tr>
+            <tr>
+                <td>Windgeschwindigkeit</td>
+                <td>{{weather.getWindSpeed()}} m/s</td>
+            </tr>
+            <tr>
+                <td>Windböhen</td>
+                <td>{{weather.getWindGust()}} m/s</td>
+            </tr>
+            <tr>
+                <td>Windrichtung</td>
+                <td>{{weather.getWindDirection()}} &deg;C</td>
+            </tr>
+            <tr>
+                <td>Regen (letzten 3h)</td>
+                <td>{{weather.getRain3h()}} mm</td>
+            </tr>
+            <tr>
+                <td>Schnee (letzten 3h)</td>
+                <td>{{weather.getSnow3h()}} mm</td>
+            </tr>
+            <tr>
+                <td>Sonnenaufgang</td>
+                <td>{{weather.getSunrise() | date:'HH:mm:ss'}} Uhr </td>
+            </tr>
+            <tr>
+                <td>Sonnenuntergang</td>
+                <td>{{weather.getSunset() | date:'HH:mm:ss'}} Uhr </td>
+            </tr>
+            
+        </table>
+        
     </div>
 </div>
+
+

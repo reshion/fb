@@ -7,7 +7,10 @@
 	<title>Fishbook</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/bootstrap/bootstrap-additions.min.css') }}" rel="stylesheet">
 
+	<link href='../bower_components/angular-motion/dist/angular-motion.min.css' rel='stylesheet' type='text/css'>
+        
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -17,7 +20,9 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+        <style>
 
+        </style>
     </head>
     <body data-ng-controller="MainController">
 <!--	<div class="overlay" data-ng-if="loading.length > 0">
@@ -76,20 +81,36 @@
 		@yield('content')
                 
 	    </div>
+            <footer>
+                
+            </footer>
 	</div>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
         <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCHIpr5MxgE7hCU-OP98fXX1cGM9k_rF_4"></script>
+<!--        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.tpl.min.js"></script>-->
+        
+        <script src="../node_modules/angular-animate/angular-animate.min.js"></script>
+        <script src="../bower_components/angular-strap/dist/angular-strap.min.js"></script>
+        <script src="../bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+        <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+        
         <script type="text/javascript">
 
-    </script>
+        </script>
 
         <script src="{{ asset('js/App.js') }}"></script>
         <script src="{{ asset('js/Controller/MainController.js') }}"></script>
+        <!-- Directiven --> 
         <script src="{{ asset('js/Directives/GeoLocationDirective.js') }}"></script>
         <script src="{{ asset('js/Directives/WeatherDirective.js') }}"></script>
+        <script src="{{ asset('js/Directives/WaterDirective.js') }}"></script>
+        <!-- Services -->
         <script src="{{ asset('js/Services/WeatherService.js') }}"></script>
+        <script src="{{ asset('js/Services/LocationService.js') }}"></script>
+        <script src="{{ asset('js/Services/WaterService.js') }}"></script>
         
         <script src="{{ asset('js/animate.js') }}"></script>
         <style>

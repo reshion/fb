@@ -2,12 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/G:/docroot/laravel5/.gitignore</file>
-            <file>file:/G:/docroot/laravel5/app/Http/Controllers/UserController.php</file>
-            <file>file:/G:/docroot/laravel5/app/Http/routes.php</file>
-            <file>file:/G:/docroot/laravel5/database/seeds/UserTableSeeder.php</file>
-            <file>file:/G:/docroot/laravel5/auth.json</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -21,7 +21,7 @@ var lr = require('tiny-lr');
 var refresh = require('gulp-livereload');
 var server = lr(); 
 var autoPrefixer = require('gulp-autoprefixer');
-var uglify = require('gulp-uglify');
+//var uglify = require('gulp-uglify');
 
 gulp.task('default', function() {
     // place code for your default task here
@@ -46,8 +46,8 @@ gulp.task('styles', function() {
 	.pipe(gulp.dest('public/css/'))
 //	.pipe(refresh(server))
 
-    gulp.src('public/js/*.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('public/js/min'));
+//    gulp.src('public/js/*.js')
+//    .pipe(uglify())
+//    .pipe(gulp.dest('public/js/min'));
 })
 
