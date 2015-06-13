@@ -57,11 +57,11 @@ return [
 			'host'      => env('DB_HOST', 'localhost'),
 			'host'      => 'localhost',
 			'database'  => env('DB_DATABASE', 'fishbook'), // laravel5
-			'database'  => 'fishbook', // laravel5
+			'database'  => 'reshion_fishbook', // laravel5
 			'username'  => env('DB_USERNAME', 'root'),
-			'username'  => 'root',
+			'username'  => 'reshion',
 			'password'  => env('DB_PASSWORD', ''),
-			'password'  =>  '',
+			'password'  =>  'WinHejyecgodnapikDy',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

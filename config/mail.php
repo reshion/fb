@@ -15,8 +15,8 @@ return [
 	|
 	*/
 
-	'driver' => env('MAIL_DRIVER', 'smtp'),
-
+	//'driver' => env('MAIL_DRIVER', 'smtp'),
+	'driver' => 'smtp',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Address
@@ -28,8 +28,8 @@ return [
 	|
 	*/
 
-	'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-
+	//'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+	'host' => 'auriga.uberspace.de',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Port
@@ -41,8 +41,8 @@ return [
 	|
 	*/
 
-	'port' => env('MAIL_PORT', 587),
-
+	//'port' => env('MAIL_PORT', 587),
+	'port' => 587,
 	/*
 	|--------------------------------------------------------------------------
 	| Global "From" Address
@@ -54,7 +54,8 @@ return [
 	|
 	*/
 
-	'from' => ['address' => null, 'name' => null],
+	//'from' => ['address' => null, 'name' => null],
+	'from' => ['address' => 'reshion@auriga.uberspace.de', 'name' => 'Rico Mutze'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +81,8 @@ return [
 	|
 	*/
 
-	'username' => env('MAIL_USERNAME'),
+	//'username' => env('MAIL_USERNAME'),
+	'username' => 'reshion',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,8 +95,8 @@ return [
 	|
 	*/
 
-	'password' => env('MAIL_PASSWORD'),
-
+	//'password' => env('MAIL_PASSWORD'),
+	'password' => 'reshion15051980',
 	/*
 	|--------------------------------------------------------------------------
 	| Sendmail System Path
