@@ -1,6 +1,21 @@
 "use strict";
-var app = angular.module("App", ['weatherService', 'weatherDirective'])
-        
+var app = angular.module("App", [
+    'weatherService',
+    'weatherDirective',
+    'waterService',
+    'waterDirective',
+    'locationService',
+    'ngSanitize',
+    'mgcrea.ngStrap',
+    'mgcrea.ngStrap.modal',
+    'mgcrea.ngStrap.aside',
+    'ngAnimate'
+]).config(function($modalProvider) {
+    angular.extend($modalProvider.defaults, {
+        html: true
+    });
+})
+
         // HELPER //
         .directive('toggleForId', function($window, $rootScope) {
             return {
@@ -17,11 +32,4 @@ var app = angular.module("App", ['weatherService', 'weatherDirective'])
             }
         })
 
-
-
-
-
-
-
-  
 

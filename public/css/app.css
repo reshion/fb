@@ -6278,7 +6278,6 @@ body .overlay {
 }
 html #wrapper,
 body #wrapper {
-  z-index: 10000000;
   min-height: 100%;
   position: relative;
 }
@@ -6309,7 +6308,7 @@ body #wrapper .navbar {
   margin-bottom: 0px;
   background-color: #323232;
   opacity: 0.9;
-  z-index: 10001;
+  z-index: 1001;
 }
 @media only screen and (min-width: 768px) {
   html #wrapper .navbar,
@@ -6411,6 +6410,15 @@ body #wrapper .coords-block #map-canvas {
     height: 400px;
   }
 }
+html #wrapper footer,
+body #wrapper footer {
+  position: relative;
+  margin-top: -150px;
+  /* negative value of footer height */
+  height: 150px;
+  clear: both;
+  padding-top: 20px;
+}
 @-webkit-keyframes animate-loading {
   0% {
     left: 0;
@@ -6454,4 +6462,22 @@ body #wrapper .coords-block #map-canvas {
     left: 0;
     opacity: 0.5;
   }
+}
+/* angular animate */
+.modal-backdrop.am-fade {
+  opacity: .5;
+  -webkit-transition: opacity .15s linear;
+          transition: opacity .15s linear;
+}
+.modal-backdrop.am-fade.ng-enter {
+  opacity: 0;
+}
+.modal-backdrop.am-fade.ng-enter.ng-enter-active {
+  opacity: .5;
+}
+.modal-backdrop.am-fade.ng-leave {
+  opacity: .5;
+}
+.modal-backdrop.am-fade.ng-leave.ng-leave-active {
+  opacity: 0;
 }
