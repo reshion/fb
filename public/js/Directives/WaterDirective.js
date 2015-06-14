@@ -9,9 +9,9 @@ angular.module('waterDirective', [])
                     },
                     templateUrl: 'templates/Water.html',
                     link: function(scope, element, attrs) {
-                        
+
                         scope.getWaterInfo = function() {
-                            
+
                             scope.$watchCollection('internCoords', function() {
                                 if (scope.internCoords.lat != 0 && scope.internCoords.lng != 0 && scope.internRadius != 0) {
                                     // set loading key
@@ -25,18 +25,22 @@ angular.module('waterDirective', [])
                             });
                         }
                         scope.getWaterInfo();
-                        
+
                         scope.getMessurement = function(pegel) {
-//                            waterService.queryMessurement(pegel).then(function(messurment){ 
-//                            scope.messurementInfoImage = messurment.getMessurementInfo();
-//                            console.log(scope.messurementInfoImage);
-                            scope.info = {
+                            waterService.queryMessurement(pegel).then(function(messurment) {
+                                scope.messurementInfoImage = messurment.getMessurementInfo();
+                                //TODO
+//                               
+                            });
+                            scope.pegel = {
                                 title: pegel,
-                                content: "<img src='http://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/" + pegel + "/W/measurements.png?start=P250D&width=900&height=400'>"
-//                                content: "<img src='" + scope.messurementInfoImage + "'>"
+                                content: "<img  class='messurement' src='http://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/" + pegel + "/W/measurements.png?start=P250D&width=900&height=400'>"
                             }
-                            
-//                            })
+
+                        }
+                        scope.info = {
+                            title: 'Gewässerdaten',
+                            content: "n/a"
                         }
                     }
                 }
