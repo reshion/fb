@@ -6400,6 +6400,10 @@ html #wrapper .content .panel .panel-body,
 body #wrapper .content .panel .panel-body {
   padding: 0px;
 }
+html #wrapper .messurement,
+body #wrapper .messurement {
+  width: 100%;
+}
 html #wrapper .coords-block #map-canvas,
 body #wrapper .coords-block #map-canvas {
   height: 200px;
