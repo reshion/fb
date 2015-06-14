@@ -92,10 +92,12 @@
 <!--        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.tpl.min.js"></script>-->
         
-        <script src="../node_modules/angular-animate/angular-animate.min.js"></script>
+<!--        <script src="../node_modules/angular-animate/angular-animate.min.js"></script>
         <script src="../bower_components/angular-strap/dist/angular-strap.min.js"></script>
         <script src="../bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
-        <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+        <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>-->
+        
+        <script src="{{ asset('/bower_components/all.js') }}"></script>
         
         <script type="text/javascript">
 
