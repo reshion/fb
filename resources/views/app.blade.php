@@ -8,8 +8,8 @@
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/bootstrap/bootstrap-additions.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('/bower_components/css/all.css') }}" rel="stylesheet">
 
-	<link href='../bower_components/angular-motion/dist/angular-motion.min.css' rel='stylesheet' type='text/css'>
         
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -97,7 +97,7 @@
         <script src="../bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
         <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>-->
         
-        <script src="{{ asset('/bower_components/all.js') }}"></script>
+        <script src="{{ asset('/bower_components/js/all.js') }}"></script>
         
         <script type="text/javascript">
 

@@ -23,6 +23,7 @@ var server = lr();
 var autoPrefixer = require('gulp-autoprefixer');
 //var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
+var concatCss = require('gulp-concat-css');
 
 gulp.task('default', function() {
     // place code for your default task here
@@ -52,9 +53,11 @@ gulp.task('styles', function() {
 //          .pipe(gulp.dest('public/js/min'));
 
     
+
+
 })
-gulp.task('bower',function() {
-    return gulp.src([
+gulp.task('bower', function() {
+     gulp.src([
 //        './bower_components/angular-motion/dist/angular-motion.min.js',
         './bower_components/angular-strap/dist/angular-strap.min.js',
         './bower_components/angular-strap/dist/angular-strap.tpl.min.js',
@@ -62,5 +65,9 @@ gulp.task('bower',function() {
         './node_modules/angular-animate/angular-animate.min.js'
     ])
             .pipe(concat('all.js'))
-            .pipe(gulp.dest('./public/bower_components/'));
+            .pipe(gulp.dest('./public/bower_components/js/'));
+    
+    return gulp.src('./bower_components/angular-motion/dist/angular-motion.min.css')
+            .pipe(concatCss("all.css"))
+            .pipe(gulp.dest('./public/bower_components/css/'));
 })
