@@ -1,7 +1,7 @@
 auth.json
 database/seeds/
 /nbproject/private/
-node_modules/laravel-elixir/
+node_modules
 config
 .env
 public/.htaccess
