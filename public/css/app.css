@@ -6256,6 +6256,21 @@ and open the template in the editor.
 /* Font Style */
 /* Media Queries definition*/
 /* height */
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19.06.2015, 18:19:03
+    Author     : rico
+*/
+html body #wrapper .content .aside {
+  width: 100%;
+}
+html body #wrapper .content .aside-header {
+  background-color: #323232;
+}
 body,
 label,
 .checkbox label {
