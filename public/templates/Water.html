@@ -1,24 +1,24 @@
 <div class="panel panel-default col-lg-6 col-xs-12">
     <div class="panel-heading action col-lg-6 col-xs-6" data-target="#panel-3" data-toggle="collapse" aria-expanded="false">Gewässerdaten</div>
-    <div class="panel-heading col-lg-6 col-xs-6 control" >&nbsp;
+    <div class="panel-heading col-lg-6 col-xs-6 control">&nbsp;
         <div class="pull-right action ">
             <span class="glyphicon glyphicon-repeat" data-ng-click="getWaterInfo()"></span>
         </div>
         <div class="pull-right action " data-html="true" data-placement="left" data-animation="am-slide-left" bs-aside="info">
-            <span class="glyphicon glyphicon-info-sign"  ></span>
+            <span class="glyphicon glyphicon-info-sign"></span>
 
         </div>
     </div>
     <div id="panel-3" class="panel-body collapse in ">
-        <div style="text-align: left; overflow: hidden" bs-aside="pegel" data-html="true" class="btn btn-default col-lg-6 col-md-6 col-sm-12 col-xs-12" 
+        <div style="text-align: left; overflow: hidden" bs-aside="pegel" data-html="true" class="btn btn-default col-lg-6 col-md-6 col-sm-12 col-xs-12"
              data-ng-repeat="water in waterInfo" data-ng-click="getMessurement(water.longname)">
             {{water.water.longname}}
             <p>Messstation: {{water.longname}}<br>
-            Km: {{water.km}}
+                Km: {{water.km}}
             </p>
         </div>
     </div>
-    
+
 </div>
 
         

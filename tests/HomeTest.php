@@ -14,9 +14,10 @@
     class HomeTest extends TestCase
         {
             public function testHomeController() {
-                 $response = $this->action('GET', 'UserController@edit', ['user' => 1]);
-               
-                    return $this->assertEquals('Home', $response->original);
+                 $response = $this->call('GET', 'home');
+
+
+                    return $this->assertEquals('Fishbook', $response->getContent());
                     
                 }
         }
