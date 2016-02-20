@@ -25,7 +25,7 @@
     </style>
 </head>
 <body data-ng-controller="MainController">
-<-- Overlay to prevent clicks -->
+<!-- Overlay to prevent clicks -->
 <div class="overlay" data-ng-if="loading.length > 0">
 
 </div>
