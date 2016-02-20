@@ -1,7 +1,8 @@
 auth.json
-database/seeds/
-/nbproject/private/
-node_modules
-config
+database/seeds/*
+/nbproject/*
+node_modules/*
+config/*
 .env
 public/.htaccess
+.idea/*
