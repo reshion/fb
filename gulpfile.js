@@ -24,7 +24,7 @@ var autoPrefixer = require('gulp-autoprefixer');
 //var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var concatCss = require('gulp-concat-css');
-
+var watch = require('gulp-watch');
 gulp.task('default', function() {
     // place code for your default task here
 });
