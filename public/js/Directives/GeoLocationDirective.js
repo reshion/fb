@@ -1,27 +1,32 @@
-app.directive('geoLocation', function($window, $rootScope, locationService) {
+app.directive('geoLocation', function($window, $rootScope, locationService, $aside) {
     return {
         restrict: "E",
         templateUrl: 'templates/GeoLocation.html',
         scope: {
+            directiveId: "@directiveid",
             internCoords: '=interncoords',
             internLoading: '=loading'
         },
         link: function(scope, element, attrs) {
-            
+            scope.canvasID = "map-canvas-" + attrs.id;
+            scope.id = attrs.id
+            console.log(scope.canvasID);
+            geoScope = scope;
             scope.refreshPosition = function() {
-                getLocation();
+                scope.getLocation();
             }
+
             
-            getLocation = function() {
+            scope.getLocation = function() {
                 // set loading true by key
                 scope.internLoading.push('geoKey');
                 p = locationService.getLocation();
                 p.then(function(data) {
                     
-                    setLocation(data)
+                    scope.setLocation(data)
                     scope.internLoading.indexOf('geoKey') > -1 ? scope.internLoading.splice(scope.internLoading.indexOf('geoKey')) : null;
                 }).catch(function(data) {
-                    setLocation(data)
+                    scope.setLocation(data)
                     scope.internLoading.indexOf('geoKey') > -1 ? scope.internLoading.splice(scope.internLoading.indexOf('geoKey')) : null;
                 })
             }
@@ -35,24 +40,27 @@ app.directive('geoLocation', function($window, $rootScope, locationService) {
             };
             scope.toggleDefaultUI = function() {
                 mapOptions.disableDefaultUI = !mapOptions.disableDefaultUI;
-                createMap();
+                scope.createMap();
                 
             }
-           
-            setLocation = function(data) {
+
+            scope.setLocation = function(data) {
                 // remove loading key
                 var position = data
                 scope.internCoords.lng = position.coords.longitude;
                 scope.internCoords.lat = position.coords.latitude;
-                createMap();
+                scope.createMap();
                 
             }
             
-            createMap = function() {
-                var newLatLng = new google.maps.LatLng(scope.internCoords.lat, scope.internCoords.lng)
+
+            scope.createMap = function() {
+            console.log(scope.canvasID);
+                scope.newLatLng = new google.maps.LatLng(scope.internCoords.lat, scope.internCoords.lng)
 //			scope.$apply();
-                map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-                
+//                map = new google.maps.Map(document.getElementById(scope.canvasID), mapOptions);
+                map = new google.maps.Map(document.getElementById(scope.canvasID), mapOptions);
+
                 var marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
@@ -62,19 +70,19 @@ app.directive('geoLocation', function($window, $rootScope, locationService) {
                 // Watch for Controller Changes
                 scope.$watchCollection('internCoords.lng', function(newValue, oldValue) {
                     if (newValue) {
-                        newLatLng = new google.maps.LatLng(scope.internCoords.lat, newValue)
-                        marker.setPosition(newLatLng);
-                        map.setCenter(newLatLng);
-                        setCoords(scope.internCoords.lat, newValue);
+                        scope.newLatLng = new google.maps.LatLng(scope.internCoords.lat, newValue)
+                        marker.setPosition(scope.newLatLng);
+                        map.setCenter(scope.newLatLng);
+                        scope.setCoords(scope.internCoords.lat, newValue);
                     }
                 }, true)
 
                 scope.$watchCollection('internCoords.lat', function(newValue, oldValue) {
                     if (newValue) {
-                        newLatLng = new google.maps.LatLng(newValue, scope.internCoords.lng)
-                        marker.setPosition(newLatLng);
-                        map.setCenter(newLatLng);
-                        setCoords(newValue, scope.internCoords.lng);
+                        scope.newLatLng = new google.maps.LatLng(newValue, scope.internCoords.lng)
+                        marker.setPosition(scope.newLatLng);
+                        map.setCenter(scope.newLatLng);
+                        scope.setCoords(newValue, scope.internCoords.lng);
                     }
                 }, true)
 
@@ -86,21 +94,28 @@ app.directive('geoLocation', function($window, $rootScope, locationService) {
                     setTimeout(function() {
                         scope.internCoords.lng = event.latLng.lng();
                         scope.internCoords.lat = event.latLng.lat();
-                        setCoords();
+                        scope.setCoords();
                         scope.$apply();
                     }, 1000);
                 });
 
-                
-                setCoords();
+
+                scope.setCoords();
             }
-            function setCoords() {
+             scope.setCoords = function() {
                     element.find('#latitude').text(scope.internCoords.lat);
                     element.find('#longitude').text(scope.internCoords.lng);
                 }
-            getLocation();
+            scope.getLocation();
 
-            scope.info = {title: 'Position', content: 'Mit einem Doppel-Klick in die Karte kann man eine Position festlegen.'}
+            //scope.info = {title: 'Position', content: 'Mit einem Doppel-Klick in die Karte kann man eine Position festlegen.'}
+            //scope.info = {title: 'Position', content: 'Mit einem Doppel-Klick in die Karte kann man eine Position festlegen.'}
+            var myOtherAside = $aside({scope: scope, show: false});
+            scope.showAside = function() {
+                myOtherAside.$promise.then(function() {
+                    myOtherAside.show();
+                })
+            }
         }
     }
 });

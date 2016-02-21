@@ -29,6 +29,12 @@ gulp.task('default', function() {
     // place code for your default task here
 });
 
+var config = {
+    watchPaths: {
+        less: "resources/assets/less/**/*"
+    }
+
+}
 
 
 
@@ -38,33 +44,29 @@ gulp.task('minify-css', function() {
             .pipe(gulp.dest('public/css/min'));
 });
 gulp.task('styles', function() {
-    gulp.src(['resources/assets/less/app.less'])
-            .pipe(less())
-//          .pipe(minifyCss())
-            .pipe(autoPrefixer())
-            .pipe(gulp.dest('public/css/'))
+
     gulp.src(['resources/assets/less/welcome.less'])
             .pipe(less())
 //          .pipe(minifyCss())
             .pipe(autoPrefixer())
-            .pipe(gulp.dest('public/css/'))
-//          .pipe(refresh(server))
+            .pipe(gulp.dest('public/css/'));
 
-//           gulp.src('public/js/*.js')
-//          .pipe(uglify())
-//          .pipe(gulp.dest('public/js/min'));
-
-    
-
+    gulp.src(['resources/assets/less/main.less'])
+        .pipe(less())
+        //          .pipe(minifyCss())
+        .pipe(autoPrefixer())
+        .pipe(gulp.dest('public/css/'))
 
 })
 gulp.task('bower', function() {
+    console.log('bower');
      gulp.src([
-//        './bower_components/angular-motion/dist/angular-motion.min.js',
+        //'./bower_components/angular-motion/dist/angular-motion.min.js',
+        './bower_components/angular/angular.min.js',
         './bower_components/angular-strap/dist/angular-strap.min.js',
         './bower_components/angular-strap/dist/angular-strap.tpl.min.js',
         './bower_components/angular-sanitize/angular-sanitize.min.js',
-        './node_modules/angular-animate/angular-animate.min.js'
+        './bower_components/angular-animate/angular-animate.min.js'
     ])
             .pipe(concat('all.js'))
             .pipe(gulp.dest('./public/bower_components/js/'));
@@ -72,4 +74,8 @@ gulp.task('bower', function() {
     return gulp.src('./bower_components/angular-motion/dist/angular-motion.min.css')
             .pipe(concatCss("all.css"))
             .pipe(gulp.dest('./public/bower_components/css/'));
+})
+
+gulp.task('watch',function() {
+    gulp.watch(config.watchPaths.less,["styles"]);
 })

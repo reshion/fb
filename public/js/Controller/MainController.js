@@ -6,6 +6,7 @@
         $scope.loading = [];
         $scope.radius = 20;
         $scope.coords = {lng: 0, lat:0 };
+        $scope.coords2 = {lng: 0, lat:0 };
     });
 
 })();

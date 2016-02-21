@@ -1,11 +1,10 @@
-@import "bootstrap/bootstrap";
-@import "includes/variables";
-@import "elements";
+
+
+
 
 
 body, label, .checkbox label {
     font-weight: 300;
-
 }
 
 
@@ -90,6 +89,7 @@ html,body {
             padding-top: 5px;
             min-height: 100%;
             z-index: 10000;
+        }
             .panel {
                 border: 0px;
                 @media @tablet {
@@ -119,27 +119,21 @@ html,body {
                     padding: 0px;
                 }
             }
-        }
+
         .messurement {
                 width: 100%;
             }
 
         .coords-block {
 
-            #map-canvas {
+            .map-canvas {
                 @media @tablet {
                     height: 400px;
                 }
                 height: 200px;
             }
         }
-        footer {
-            position: relative;
-            margin-top: 0px; /* negative value of footer height */
-            height: 150px;
-            clear:both;
-            padding-top:20px;
-        } 
+
     }
 } 
 

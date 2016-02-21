@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fishbook</title>
 
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/bootstrap/bootstrap-additions.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/bower_components/css/all.css') }}" rel="stylesheet">
 
@@ -80,7 +80,6 @@
         </div>
     </div>
 
-
     <div class="container content">
         @yield('content')
 
@@ -91,15 +90,15 @@
 </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+{{--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>--}}
 <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCHIpr5MxgE7hCU-OP98fXX1cGM9k_rF_4"></script>
 
 
-<script src="{{ asset('/bower_components/js/all.js') }}"></script>
 
 <script type="text/javascript">
 
 </script>
+<script src="{{ asset('/bower_components/js/all.js') }}"></script>
 
 <script src="{{ asset('js/App.js') }}"></script>
 <script src="{{ asset('js/Controller/MainController.js') }}"></script>
@@ -113,6 +112,7 @@
 <script src="{{ asset('js/Services/WaterService.js') }}"></script>
 
 <script src="{{ asset('js/animate.js') }}"></script>
+
 <style>
     * {
         border-radius: 0px !important;
