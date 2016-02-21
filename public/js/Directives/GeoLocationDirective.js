@@ -3,13 +3,15 @@ app.directive('geoLocation', function($window, $rootScope, locationService, $asi
         restrict: "E",
         templateUrl: 'templates/GeoLocation.html',
         scope: {
-            directiveId: "@directiveid",
             internCoords: '=interncoords',
-            internLoading: '=loading'
+            internLoading: '=loading',
+            height: '=height'
         },
         link: function(scope, element, attrs) {
             scope.canvasID = "map-canvas-" + attrs.id;
+            scope.canvasHeight = scope.height;
             scope.id = attrs.id
+
             console.log(scope.canvasID);
             geoScope = scope;
             scope.refreshPosition = function() {
@@ -57,8 +59,7 @@ app.directive('geoLocation', function($window, $rootScope, locationService, $asi
             scope.createMap = function() {
             console.log(scope.canvasID);
                 scope.newLatLng = new google.maps.LatLng(scope.internCoords.lat, scope.internCoords.lng)
-//			scope.$apply();
-//                map = new google.maps.Map(document.getElementById(scope.canvasID), mapOptions);
+                document.getElementById(scope.canvasID).style.height = scope.canvasHeight + "px";
                 map = new google.maps.Map(document.getElementById(scope.canvasID), mapOptions);
 
                 var marker = new google.maps.Marker({
@@ -110,10 +111,10 @@ app.directive('geoLocation', function($window, $rootScope, locationService, $asi
 
             //scope.info = {title: 'Position', content: 'Mit einem Doppel-Klick in die Karte kann man eine Position festlegen.'}
             //scope.info = {title: 'Position', content: 'Mit einem Doppel-Klick in die Karte kann man eine Position festlegen.'}
-            var myOtherAside = $aside({scope: scope, show: false});
+            var InfoPanel = $aside({scope: scope, show: false});
             scope.showAside = function() {
-                myOtherAside.$promise.then(function() {
-                    myOtherAside.show();
+                InfoPanel.$promise.then(function() {
+                    InfoPanel.show();
                 })
             }
         }

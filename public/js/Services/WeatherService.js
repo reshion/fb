@@ -68,7 +68,7 @@ angular.module('weatherService', [])
                     unit = typeof unit !== 'undefined' ? unit : 'metric';
                     var uri = apiEndpoint + "?lat=" + coords.lat + "&lon=" + coords.lng + "&units=" + unit + "&callback=JSON_CALLBACK";
                     uri += "&APPID=fbfafd4b25539198a90fb0abf14b6048";
-		    $http.jsonp(uri).
+		             $http.jsonp(uri).
                             success(function(response, status) {
                                 deferred.resolve(new WeatherInfo(response));
                             }).error(function(error, status) {

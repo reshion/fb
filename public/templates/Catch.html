@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+    <div class="panel-heading action col-lg-6 col-xs-6"
+         data-target="#catch-1"
+         data-toggle="collapse"
+         aria-expanded="false">
+        Neuer Fang
+        <!--<span style="font-size:8px" id="latitude"></span> , <span style="font-size:8px" id="longitude"></span>-->
+
+    </div>
+    <div class="panel-heading col-lg-6 col-xs-6 control">
+        &nbsp;
+        <!--<div class="pull-right action" data-ng-click="refreshPosition()">-->
+        <!--<span class="glyphicon glyphicon-repeat"></span>-->
+        <!--</div>-->
+        <!--<div class="pull-left action" data-ng-click="toggleDefaultUI()">-->
+        <!--<span class=" glyphicon glyphicon-globe"></span>-->
+        <!--</div>-->
+        <!--<div class="pull-right action" data-html="true" data-placement="left"  data-animation="am-slide-left" bs-aside="info" >-->
+        <div class="pull-right action" data-html="true" data-placement="left" data-animation="am-slide-left"
+             bs-aside="InfoPanel" data-template="templates/CatchLocationInfo.html">
+            <span class="glyphicon glyphicon-globe"></span>
+
+        </div>
+    </div>
+    <div id="catch-1" class="panel-body collapse in col-lg-12">
+        <form class="form-horizontal">
+            <div class="form-group " data-ng-repeat="(index,attribute) in catch.fish">
+                <!--<label class="col-lg-2 control-label">{{catch.fish[index].name}}</label>-->
+                <div class="col-lg-12">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-circle"></i></span>
+                        <input type="text" class="form-control input-lg" data-ng-model="catch.fish[index].value"
+                               placeholder="{{catch.fish[index].name}}">
+
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-success" data-ng-click="saveCatch(catch)" >Speichern</button>
+        </form>
+
+    </div>
+</div>

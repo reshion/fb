@@ -9,6 +9,7 @@
     <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/bootstrap/bootstrap-additions.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/bower_components/css/all.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 
     <!-- Fonts -->
@@ -58,6 +59,14 @@
                         <li><a href="{{ url('/auth/login') }}">Login</a></li>
                         <li><a href="{{ url('/auth/register') }}">Register</a></li>
                     @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false">Fangbuch<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    Fangbuch
+                                    <li><a href="{{ url('/catch') }}">Neuer Fang</a></li>
+                                </ul>
+                            </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
@@ -68,6 +77,7 @@
                                 <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
                                 <li><a href="{{ url('/profile') }}">Profile</a></li>
                             </ul>
+
                         </li>
                     @endif
                 </ul>
@@ -106,10 +116,12 @@
 <script src="{{ asset('js/Directives/GeoLocationDirective.js') }}"></script>
 <script src="{{ asset('js/Directives/WeatherDirective.js') }}"></script>
 <script src="{{ asset('js/Directives/WaterDirective.js') }}"></script>
+<script src="{{ asset('js/Directives/CatchDirective.js') }}"></script>
 <!-- Services -->
 <script src="{{ asset('js/Services/WeatherService.js') }}"></script>
 <script src="{{ asset('js/Services/LocationService.js') }}"></script>
 <script src="{{ asset('js/Services/WaterService.js') }}"></script>
+<script src="{{ asset('js/Services/CatchService.js') }}"></script>
 
 <script src="{{ asset('js/animate.js') }}"></script>
 

@@ -6266,6 +6266,9 @@ html body #wrapper .content .aside {
 html body #wrapper .content .aside-header {
   background-color: #323232;
 }
+.no-padding {
+  padding: 0px;
+}
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -6278,6 +6281,26 @@ and open the template in the editor.
 /* Font Style */
 /* Media Queries definition*/
 /* height */
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 19.06.2015, 18:19:03
+    Author     : rico
+*/
+html body #wrapper .content .aside {
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  html body #wrapper .content .aside-body {
+    padding: 0px;
+  }
+}
+html body #wrapper .content .aside-header {
+  background-color: #323232;
+}
 body {
   margin: 0;
   padding: 0;

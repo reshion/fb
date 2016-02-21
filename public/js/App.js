@@ -5,6 +5,8 @@ var app = angular.module("App", [
     'waterService',
     'waterDirective',
     'locationService',
+    'catchDirective',
+    'catchService',
     'ngSanitize',
     'mgcrea.ngStrap',
     'mgcrea.ngStrap.modal',
