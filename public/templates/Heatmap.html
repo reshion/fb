@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+    <div class="panel-heading action col-lg-6 col-xs-12"
+         data-target="#panel-{{id}}"
+         data-toggle="collapse"
+         aria-expanded="false">
+        Heatmap
+        <!--<span style="font-size:8px" id="latitude"></span> , <span style="font-size:8px" id="longitude"></span>-->
+
+    </div>
+    <div class="panel-heading col-lg-6 col-xs-12 control">
+        &nbsp;
+        <div class="pull-right action" data-ng-click="loadCoords()">
+            <span class="glyphicon glyphicon-repeat"></span>
+        </div>
+        <div class="pull-left action" data-ng-click="toggleHeatmap()">
+            <i class=" glyphicon glyphicon-globe"></i>
+        </div>
+        <div class="pull-left action" data-ng-click="changeGradient()">
+            <i class="fa fa-adjust"></i>
+        </div>
+        <div class="pull-left action" data-ng-click="changeRadius()">
+            <i class="fa fa-dot-circle-o"></i>
+        </div>
+        <div class="pull-left action" data-ng-click="changeOpacity()">
+            <i class="fa fa-barcode"></i>
+        </div>
+        <div class="pull-right action" data-html="true" data-placement="left"  data-animation="am-slide-left" bs-aside="InfoPanel" data-template="templates/GeoLocationInfo.html" >
+            <span class="glyphicon glyphicon-info-sign"  ></span>
+        </div>
+    </div>
+    <div id="panel-{{id}}" class="panel-body collapse in">
+        <div id="heatmap" class="coords-block">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heatmap"  id="heatmap-canvas-{{id}}"></div>
+        </div>
+    </div>
+</div>
+<!--<div id="floating-panel">-->
+    <!--<button onclick="toggleHeatmap()">Toggle Heatmap</button>-->
+    <!--<button onclick="changeGradient()">Change gradient</button>-->
+    <!--<button onclick="changeRadius()">Change radius</button>-->
+    <!--<button onclick="changeOpacity()">Change opacity</button>-->
+<!--</div>-->

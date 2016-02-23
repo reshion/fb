@@ -20,7 +20,7 @@ angular.module('waterService', [])
                     var deferred = $q.defer();
 //                var uri = apiEndpoint + 'stations.json?latitude=' + coords.lat + "&longitude=" + coords.lng + "&radius=" + radius;
                     var uri = apiEndpointPegel + 'stations/' + pegel + "/W/measurements.png?start=P250D&width=900&height=400";
-                    
+
                     $http.get(uri).
                             success(function(response, status) {
                                 deferred.resolve(new messurementInfo(response));
@@ -35,7 +35,7 @@ angular.module('waterService', [])
                     var deferred = $q.defer();
 //                var uri = apiEndpoint + 'stations.json?latitude=' + coords.lat + "&longitude=" + coords.lng + "&radius=" + radius;
                     var uri = apiEndpointPegel + 'stations.json?latitude=' + coords.lat + "&longitude=" + coords.lng + "&radius=" + radius;
-                    
+                    console.log(uri);
                     $http.get(uri).
                             success(function(response, status) {
                                 deferred.resolve(new waterInfo(response));

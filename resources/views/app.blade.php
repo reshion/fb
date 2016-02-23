@@ -101,7 +101,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 {{--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>--}}
-<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCHIpr5MxgE7hCU-OP98fXX1cGM9k_rF_4"></script>
+<script async defer src="//maps.googleapis.com/maps/api/js?key=AIzaSyCHIpr5MxgE7hCU-OP98fXX1cGM9k_rF_4&signed_in=true&libraries=visualization"></script>
 
 
 
@@ -117,11 +117,13 @@
 <script src="{{ asset('js/Directives/WeatherDirective.js') }}"></script>
 <script src="{{ asset('js/Directives/WaterDirective.js') }}"></script>
 <script src="{{ asset('js/Directives/CatchDirective.js') }}"></script>
+<script src="{{ asset('js/Directives/HeatmapDirective.js') }}"></script>
 <!-- Services -->
 <script src="{{ asset('js/Services/WeatherService.js') }}"></script>
 <script src="{{ asset('js/Services/LocationService.js') }}"></script>
 <script src="{{ asset('js/Services/WaterService.js') }}"></script>
 <script src="{{ asset('js/Services/CatchService.js') }}"></script>
+<script src="{{ asset('js/Services/HeatmapService.js') }}"></script>
 
 <script src="{{ asset('js/animate.js') }}"></script>
 

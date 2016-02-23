@@ -7,6 +7,8 @@ var app = angular.module("App", [
     'locationService',
     'catchDirective',
     'catchService',
+    'heatmapDirective',
+    'heatmapService',
     'ngSanitize',
     'mgcrea.ngStrap',
     'mgcrea.ngStrap.modal',

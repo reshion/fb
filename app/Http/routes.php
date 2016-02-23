@@ -29,6 +29,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('create', 'CatchController@create');
         Route::get('create', 'CatchController@create');
     });
+    Route::group(['prefix' => 'heatmap'], function () {
+        Route::get('load', 'CatchController@heatmap');
+    });
 });
 
 Route::controllers([

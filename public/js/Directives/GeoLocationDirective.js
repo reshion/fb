@@ -10,6 +10,7 @@ app.directive('geoLocation', function($window, $rootScope, locationService, $asi
         link: function(scope, element, attrs) {
             scope.canvasID = "map-canvas-" + attrs.id;
             scope.canvasHeight = scope.height;
+
             scope.id = attrs.id
 
             console.log(scope.canvasID);
@@ -59,7 +60,7 @@ app.directive('geoLocation', function($window, $rootScope, locationService, $asi
             scope.createMap = function() {
             console.log(scope.canvasID);
                 scope.newLatLng = new google.maps.LatLng(scope.internCoords.lat, scope.internCoords.lng)
-                document.getElementById(scope.canvasID).style.height = scope.canvasHeight + "px";
+                //document.getElementById(scope.canvasID).style.height = scope.canvasHeight + "px";
                 map = new google.maps.Map(document.getElementById(scope.canvasID), mapOptions);
 
                 var marker = new google.maps.Marker({

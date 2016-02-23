@@ -6,15 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CreateCapturesTable' => $baseDir . '/database/migrations/2016_02_21_154824_create_captures_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePermissionRoleTable' => $baseDir . '/database/migrations/2015_01_26_115523_create_permission_role_table.php',
     'CreatePermissionUserTable' => $baseDir . '/database/migrations/2015_02_09_132439_create_permission_user_table.php',
     'CreatePermissionsTable' => $baseDir . '/database/migrations/2015_01_26_115212_create_permissions_table.php',
     'CreateRoleUserTable' => $baseDir . '/database/migrations/2015_01_15_114412_create_role_user_table.php',
     'CreateRolesTable' => $baseDir . '/database/migrations/2015_01_15_105324_create_roles_table.php',
-    'CreateTestsTable' => $baseDir . '/database/migrations/2015_05_14_155223_create_tests_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
-    'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'DatabaseSeeder' => $baseDir . '/database/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
@@ -432,5 +432,4 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/Text/Template.php',
-    'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
 );

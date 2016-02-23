@@ -17,7 +17,8 @@ angular.module('catchDirective', [])
                             length: {name: 'Länge', value: ''},
                             extent: {name: 'Umfang', value: ''},
                             weight: {name: 'Gewicht', value: ''},
-                        }
+                        },
+                        coords: scope.internCoords
                     }
                     weatherService.q(scope.internCoords).then(function(w) {
                         // remove loading key
@@ -34,7 +35,7 @@ angular.module('catchDirective', [])
                 scope.saveCatch = function(newCatch) {
 
                     catchService.save(newCatch).then(function(saveCatchInfo){
-                        var myModal = $modal({'title' : 'Titel', content:saveCatchInfo.get().data.data.message, show: false});
+                        var myModal = $modal({'title' : 'Titel', content: "<code>" +saveCatchInfo.get().data.data.message + "</code>", show: false});
                         scope.showModal(myModal)
                         scope.newCatch(function(data){
                             scope.catch = data;
@@ -55,8 +56,32 @@ angular.module('catchDirective', [])
                         InfoPanel.show();
                     })
                 }
+                scope.getLocation = function(callback) {
+                    // set loading true by key
+                    scope.internLoading.push('geoKey');
+                    p = locationService.getLocation();
+                    p.then(function(data) {
 
+
+                        var position = data
+                        scope.internCoords.lng = position.coords.longitude;
+                        scope.internCoords.lat = position.coords.latitude;
+                        scope.internLoading.indexOf('geoKey') > -1 ? scope.internLoading.splice(scope.internLoading.indexOf('geoKey')) : null;
+                        callback();
+                    }).catch(function(data) {
+                        var position = data
+                        scope.internCoords.lng = position.coords.longitude;
+                        scope.internCoords.lat = position.coords.latitude;
+                        scope.internLoading.indexOf('geoKey') > -1 ? scope.internLoading.splice(scope.internLoading.indexOf('geoKey')) : null;
+                        callback();
+                    })
+                }
                 scope.ini = function() {
+                    scope.getLocation(function(){
+                        scope.newCatch(function(data){
+                            scope.catch = data;
+                        });
+                    });
                     scope.coords = scope.internCoords;
                     scope.loading = scope.internLoading;
                     scope.info = {
@@ -64,9 +89,7 @@ angular.module('catchDirective', [])
                         "content": "Meteorologische Informationen in Abhängigkeit der Position."
                     };
                     //console.log(scope.getWaterInfo(new scope.newCatch()))
-                    scope.newCatch(function(data){
-                        scope.catch = data;
-                    });
+
 
 
                 }
