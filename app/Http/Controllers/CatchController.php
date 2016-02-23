@@ -24,7 +24,7 @@ class CatchController extends Controller {
 	public function index()
 	{
 		$user = Auth::user ();
-		if (!$user->is ('admin'))
+		if (!$user->is ('admin') && !$user->is ('guest'))
 		{
 			return redirect ('home');
 		}
