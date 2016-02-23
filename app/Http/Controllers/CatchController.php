@@ -24,7 +24,7 @@ class CatchController extends Controller {
 	public function index()
 	{
 		$user = Auth::user ();
-		if (!$user->is ('admin') && !$user->is ('guest'))
+		if (!$user->is ('admin') && !$user->is ('user'))
 		{
 			return redirect ('home');
 		}
@@ -38,6 +38,11 @@ class CatchController extends Controller {
 	 */
 	public function create()
 	{
+		$user = Auth::user ();
+		if (!$user->is ('admin') && !$user->is ('user'))
+		{
+			return redirect ('home');
+		}
 		$data	 = Request::input();
 
 		$Capture = new Capture;
