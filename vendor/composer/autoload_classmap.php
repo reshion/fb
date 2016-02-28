@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddUserIdToCaptures' => $baseDir . '/database/migrations/2016_02_28_104421_add_user_id_to_captures.php',
     'CreateCapturesTable' => $baseDir . '/database/migrations/2016_02_21_154824_create_captures_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePermissionRoleTable' => $baseDir . '/database/migrations/2015_01_26_115523_create_permission_role_table.php',

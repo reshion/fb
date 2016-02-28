@@ -14,13 +14,14 @@ class CreateCapturesTable extends Migration {
 	{
 		Schema::create('captures', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('id')->unsigned();;
 			$table->string('species');
 			$table->string('length');
 			$table->string('extent');
 			$table->string('weight');
 			$table->string('coords');
 			$table->string('weather');
+			$table->integer('user_id')->nullable()->unsigned()->index();
 			$table->timestamps();
 		});
 	}
