@@ -21,7 +21,7 @@ class CreateCapturesTable extends Migration {
 			$table->string('weight');
 			$table->string('coords');
 			$table->string('weather');
-			$table->integer('user_id')->nullable()->unsigned()->index();
+
 			$table->timestamps();
 		});
 	}

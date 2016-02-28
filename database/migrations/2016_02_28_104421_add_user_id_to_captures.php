@@ -14,6 +14,7 @@ class AddUserIdToCaptures extends Migration {
 	{
 		Schema::table('captures', function(Blueprint $table){
 
+			$table->integer('user_id')->nullable()->unsigned()->index();
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 		});
 	}
