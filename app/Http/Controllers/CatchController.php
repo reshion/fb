@@ -38,8 +38,8 @@ class CatchController extends Controller {
 	 */
 	public function create()
 	{
-		$user = Auth::user ();
-		if (!$user->is ('admin') && !$user->is ('user'))
+		$User = Auth::user ();
+		if (!$User->is ('admin') && !$User->is ('user'))
 		{
 			return redirect ('home');
 		}
@@ -52,15 +52,17 @@ class CatchController extends Controller {
 		$Capture->weight = $data['fish']['weight']['value'];
 		$Capture->coords = json_encode($data['coords']);
 		$Capture->weather = json_encode($data['weather']);
+		$Capture->user_id = $User->id;
 		$Capture->save();
 
-		return Response::json(['data' => array('message' => 'Erfolgreich gespeichert.' . json_encode($data) , 'redirecturl' => '/')]);
+		return Response::json(['data' => array('message' => 'Erfolgreich gespeichert.', 'log' => json_encode($data) , 'redirecturl' => '/')]);
 	}
 
 	public function heatmap() {
 
 		$CoordList = array();
-		$Captures = Capture::all();
+		$User = Auth::user();
+		$Captures = Capture::where('user_id', $User->id)->get();
 		foreach($Captures as $Capture) {
 			if($Capture->coords != '') {
 				$CoordList[] = json_decode($Capture->coords);

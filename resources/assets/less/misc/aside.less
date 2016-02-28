@@ -14,14 +14,24 @@ html {
       .content {
         .aside {
           width: 100%;
-        }
-        .aside-body {
-          @media @tablet {
+
+          .aside-body {
             padding: 0px
           }
-        }
-        .aside-header {
-          background-color: @black-one;
+          .panel-body {
+            margin-top: 0px;
+            .map-canvas {
+              height: 400px;
+
+            }
+          }
+
+          .aside-header {
+            background-color: @black-one;
+          }
+          .aside-footer {
+            padding: 0px;
+          }
         }
       }
     }

@@ -6293,13 +6293,20 @@ and open the template in the editor.
 html body #wrapper .content .aside {
   width: 100%;
 }
-@media only screen and (min-width: 768px) {
-  html body #wrapper .content .aside-body {
-    padding: 0px;
-  }
+html body #wrapper .content .aside .aside-body {
+  padding: 0px;
 }
-html body #wrapper .content .aside-header {
+html body #wrapper .content .aside .panel-body {
+  margin-top: 0px;
+}
+html body #wrapper .content .aside .panel-body .map-canvas {
+  height: 400px;
+}
+html body #wrapper .content .aside .aside-header {
   background-color: #323232;
+}
+html body #wrapper .content .aside .aside-footer {
+  padding: 0px;
 }
 body {
   margin: 0;

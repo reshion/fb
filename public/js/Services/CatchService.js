@@ -7,19 +7,14 @@ angular.module('catchService', [])
             this.get = function() {
                 return this.data ? this.data : [];
             }
-
         }
 
         this.save = function(newCatch) {
             console.log('save catch');
             var deferred = $q.defer();
-//                var uri = apiEndpoint + 'stations.json?latitude=' + coords.lat + "&longitude=" + coords.lng + "&radius=" + radius;
             var req = {
                 method: 'POST',
                 url: apiEndpointCatch + 'create',
-                //headers: {
-                //    'Content-Type': undefined
-                //},
                 data: angular.toJson(newCatch)
             }
             $http(req).

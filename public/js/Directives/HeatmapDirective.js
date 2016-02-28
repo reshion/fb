@@ -13,11 +13,14 @@ angular.module('heatmapDirective', [])
                 scope.heatmap;
 
                 scope.prepareMap = function(coords) {
-
+                    console.log(coords);
+                    var lat, lng;
+                    lat = coords.length > 0 ? coords[0].lat : 51;
+                    lng = coords.length > 0 ? coords[0].lng : 13;
                     document.getElementById("heatmap-canvas-" + scope.id).style.height = scope.internHeight;
                     scope.map = new google.maps.Map(document.getElementById("heatmap-canvas-" + scope.id), {
                         zoom: 10,
-                        center: {lat: coords[1].lat, lng: coords[1].lng},
+                        center: {lat: lat, lng: lng},
                         mapTypeId: google.maps.MapTypeId.SATELLITE
                     });
                     scope.heatmap = new google.maps.visualization.HeatmapLayer({
@@ -36,6 +39,7 @@ angular.module('heatmapDirective', [])
                     heatmapService.load().then(function(coords){
 
                         scope.prepareMap(coords.getCoords());
+
                     })
                 }
                 scope.toggleHeatmap = function() {

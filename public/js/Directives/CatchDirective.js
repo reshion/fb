@@ -33,9 +33,8 @@ angular.module('catchDirective', [])
 
 
                 scope.saveCatch = function(newCatch) {
-
                     catchService.save(newCatch).then(function(saveCatchInfo){
-                        var myModal = $modal({'title' : 'Titel', content: "<code>" +saveCatchInfo.get().data.data.message + "</code>", show: false});
+                        var myModal = $modal({'title' : 'Titel', content: saveCatchInfo.get().data.data.message, show: false});
                         scope.showModal(myModal)
                         scope.newCatch(function(data){
                             scope.catch = data;
