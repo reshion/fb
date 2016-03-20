@@ -5,8 +5,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
-use Bican\Roles\Models\Role;
-use \Illuminate\Support\Facades\Auth;
+//use Bican\Roles\Models\Role;
+use Illuminate\Support\Facades\Auth;
 //use Illuminate\Http\Request;
 use Request;
 
@@ -16,6 +16,8 @@ use Request;
         public function __construct ()
             {
             $this->middleware ('auth');
+//            $this->middleware ('group', ['group' => ['admin']]);
+            $this->middleware ('group');
             }
 
         /**
