@@ -2,15 +2,14 @@
 
 namespace Bican\Roles\Models;
 
-use Bican\Roles\Traits\RoleTrait;
-use Bican\Roles\Traits\SlugableTrait;
-use Illuminate\Support\Facades\Config;
+use Bican\Roles\Traits\Slugable;
 use Illuminate\Database\Eloquent\Model;
-use Bican\Roles\Contracts\RoleContract;
+use Bican\Roles\Traits\RoleHasRelations;
+use Bican\Roles\Contracts\RoleHasRelations as RoleHasRelationsContract;
 
-class Role extends Model implements RoleContract
+class Role extends Model implements RoleHasRelationsContract
 {
-    use RoleTrait, SlugableTrait;
+    use Slugable, RoleHasRelations;
 
     /**
      * The attributes that are mass assignable.
@@ -20,16 +19,16 @@ class Role extends Model implements RoleContract
     protected $fillable = ['name', 'slug', 'description', 'level'];
 
     /**
-     * Create a new Eloquent model instance.
+     * Create a new model instance.
      *
      * @param array $attributes
-     * @return mixed
+     * @return void
      */
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
 
-        if ($connection = Config::get('roles.connection')) {
+        if ($connection = config('roles.connection')) {
             $this->connection = $connection;
         }
     }

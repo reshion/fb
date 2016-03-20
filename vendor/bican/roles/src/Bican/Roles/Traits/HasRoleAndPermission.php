@@ -2,14 +2,26 @@
 
 namespace Bican\Roles\Traits;
 
-use Bican\Roles\Models\Permission;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Database\Eloquent\Collection;
-use Bican\Roles\Exceptions\RoleNotFoundException;
-use Bican\Roles\Exceptions\InvalidArgumentException;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
+use InvalidArgumentException;
 
 trait HasRoleAndPermission
 {
+    /**
+     * Property for caching roles.
+     *
+     * @var \Illuminate\Database\Eloquent\Collection|null
+     */
+    protected $roles;
+
+    /**
+     * Property for caching permissions.
+     *
+     * @var \Illuminate\Database\Eloquent\Collection|null
+     */
+    protected $permissions;
+
     /**
      * User belongs to many roles.
      *
@@ -17,43 +29,45 @@ trait HasRoleAndPermission
      */
     public function roles()
     {
-        return $this->belongsToMany('Bican\Roles\Models\Role')->withTimestamps();
+        return $this->belongsToMany(config('roles.models.role'))->withTimestamps();
     }
 
     /**
-     * Check if the user has a provided role or roles.
+     * Get all roles as collection.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getRoles()
+    {
+        return (!$this->roles) ? $this->roles = $this->roles()->get() : $this->roles;
+    }
+
+    /**
+     * Check if the user has a role or roles.
      *
      * @param int|string|array $role
-     * @param string $methodName
+     * @param bool $all
      * @return bool
-     * @throws \Bican\Roles\Exceptions\InvalidArgumentException
      */
-    public function is($role, $methodName = 'One')
+    public function is($role, $all = false)
     {
         if ($this->isPretendEnabled()) {
             return $this->pretend('is');
         }
 
-        $this->checkMethodNameArgument($methodName);
-
-        if ($this->{'is' . ucwords($methodName)}($this->getArrayFrom($role), $this->roles()->get())) {
-            return true;
-        }
-
-        return false;
+        return $this->{$this->getMethodName('is', $all)}($role);
     }
 
     /**
-     * Check if the user has at least one of provided roles.
+     * Check if the user has at least one role.
      *
-     * @param array $roles
-     * @param \Illuminate\Database\Eloquent\Collection $userRoles
+     * @param int|string|array $role
      * @return bool
      */
-    protected function isOne(array $roles, Collection $userRoles)
+    public function isOne($role)
     {
-        foreach ($roles as $role) {
-            if ($this->hasRole($role, $userRoles)) {
+        foreach ($this->getArrayFrom($role) as $role) {
+            if ($this->hasRole($role)) {
                 return true;
             }
         }
@@ -62,16 +76,15 @@ trait HasRoleAndPermission
     }
 
     /**
-     * Check if the user has all provided roles.
+     * Check if the user has all roles.
      *
-     * @param array $roles
-     * @param \Illuminate\Database\Eloquent\Collection $userRoles
+     * @param int|string|array $role
      * @return bool
      */
-    protected function isAll(array $roles, Collection $userRoles)
+    public function isAll($role)
     {
-        foreach ($roles as $role) {
-            if (!$this->hasRole($role, $userRoles)) {
+        foreach ($this->getArrayFrom($role) as $role) {
+            if (!$this->hasRole($role)) {
                 return false;
             }
         }
@@ -80,109 +93,81 @@ trait HasRoleAndPermission
     }
 
     /**
-     * Check if the user has provided role.
+     * Check if the user has role.
      *
-     * @param int|string $providedRole
-     * @param \Illuminate\Database\Eloquent\Collection $userRoles
+     * @param int|string $role
      * @return bool
      */
-    protected function hasRole($providedRole, Collection $userRoles)
+    public function hasRole($role)
     {
-        foreach ($userRoles as $role) {
-            if ($role->id == $providedRole || str_is($providedRole, $role->slug)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Attach role.
-     *
-     * @param int|\Bican\Roles\Models\Role $role
-     * @return mixed
-     */
-    public function attachRole($role)
-    {
-        if (!$this->roles()->get()->contains($role)) {
-            return $this->roles()->attach($role);
-        }
-
-        return true;
-    }
-
-    /**
-     * Detach role.
-     *
-     * @param int|\Bican\Roles\Models\Role $role
-     * @return mixed
-     */
-    public function detachRole($role)
-    {
-        return $this->roles()->detach($role);
-    }
-
-    /**
-     * Detach all roles.
-     *
-     * @return mixed
-     */
-    public function detachAllRoles()
-    {
-        return $this->roles()->detach();
-    }
-
-    /**
-     * Get users level.
-     *
-     * @return int
-     * @throws \Bican\Roles\Exceptions\RoleNotFoundException
-     */
-    public function level()
-    {
-        if ($role = $this->roles()->orderBy('level', 'desc')->first()) {
-            return $role->level;
-        }
-
-        throw new RoleNotFoundException('This user has no role.');
-    }
-
-    /**
-     * Scope selecting users by provided role.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string $role
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeRole($query, $role)
-    {
-        return $query->whereHas('roles', function ($query) use ($role) {
-            $query->where('slug', $role);
+        return $this->getRoles()->contains(function ($key, $value) use ($role) {
+            return $role == $value->id || Str::is($role, $value->slug);
         });
     }
 
     /**
-     * Get all role permissions.
+     * Attach role to a user.
      *
-     * @return
-     * @throws \Bican\Roles\Exceptions\RoleNotFoundException
+     * @param int|\Bican\Roles\Models\Role $role
+     * @return null|bool
+     */
+    public function attachRole($role)
+    {
+        return (!$this->getRoles()->contains($role)) ? $this->roles()->attach($role) : true;
+    }
+
+    /**
+     * Detach role from a user.
+     *
+     * @param int|\Bican\Roles\Models\Role $role
+     * @return int
+     */
+    public function detachRole($role)
+    {
+        $this->roles = null;
+
+        return $this->roles()->detach($role);
+    }
+
+    /**
+     * Detach all roles from a user.
+     *
+     * @return int
+     */
+    public function detachAllRoles()
+    {
+        $this->roles = null;
+
+        return $this->roles()->detach();
+    }
+
+    /**
+     * Get role level of a user.
+     *
+     * @return int
+     */
+    public function level()
+    {
+        return ($role = $this->getRoles()->sortByDesc('level')->first()) ? $role->level : 0;
+    }
+
+    /**
+     * Get all permissions from roles.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function rolePermissions()
     {
-        if (!$rolesList = $this->roles()->select('roles.id')->lists('roles.id')) {
-            throw new RoleNotFoundException('This user has no role.');
+        $permissionModel = app(config('roles.models.permission'));
+
+        if (!$permissionModel instanceof Model) {
+            throw new InvalidArgumentException('[roles.models.permission] must be an instance of \Illuminate\Database\Eloquent\Model');
         }
 
-        return Permission::select([
-                    'permissions.*',
-                    'permission_role.created_at as pivot_created_at',
-                    'permission_role.updated_at as pivot_updated_at'
-                ])->join('permission_role', 'permission_role.permission_id', '=', 'permissions.id')
-                ->join('roles', 'roles.id', '=', 'permission_role.role_id')
-                ->whereIn('roles.id', $rolesList)
-                ->orWhere('roles.level', '<', $this->level())
-                ->groupBy('permissions.id');
+        return $permissionModel::select(['permissions.*', 'permission_role.created_at as pivot_created_at', 'permission_role.updated_at as pivot_updated_at'])
+                ->join('permission_role', 'permission_role.permission_id', '=', 'permissions.id')->join('roles', 'roles.id', '=', 'permission_role.role_id')
+                ->whereIn('roles.id', $this->getRoles()->lists('id')->toArray()) ->orWhere('roles.level', '<', $this->level())
+                ->groupBy(['permissions.id', 'pivot_created_at', 'pivot_updated_at']);
     }
 
     /**
@@ -192,56 +177,45 @@ trait HasRoleAndPermission
      */
     public function userPermissions()
     {
-        return $this->belongsToMany('Bican\Roles\Models\Permission')->withTimestamps();
+        return $this->belongsToMany(config('roles.models.permission'))->withTimestamps();
     }
 
     /**
-     * Merge role permissions and user permissions.
+     * Get all permissions as collection.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function permissions()
+    public function getPermissions()
     {
-        return $this->rolePermissions()->get()->merge($this->userPermissions()->get());
+        return (!$this->permissions) ? $this->permissions = $this->rolePermissions()->get()->merge($this->userPermissions()->get()) : $this->permissions;
     }
 
     /**
      * Check if the user has a permission or permissions.
      *
      * @param int|string|array $permission
-     * @param string $methodName
-     * @param string $from
+     * @param bool $all
      * @return bool
-     * @throws \Bican\Roles\Exceptions\InvalidArgumentException
      */
-    public function can($permission, $methodName = 'One', $from = '')
+    public function can($permission, $all = false)
     {
         if ($this->isPretendEnabled()) {
             return $this->pretend('can');
         }
 
-        $this->checkMethodNameArgument($methodName);
-
-        $allPermissions = ($from != 'role' && $from != 'user') ? $this->permissions() : $this->{$from . 'Permissions'}()->get();
-
-        if ($this->{'can' . ucwords($methodName)}($this->getArrayFrom($permission), $allPermissions)) {
-            return true;
-        }
-
-        return false;
+        return $this->{$this->getMethodName('can', $all)}($permission);
     }
 
     /**
-     * Check if the user has at least one of provided permissions.
+     * Check if the user has at least one permission.
      *
-     * @param array $permissions
-     * @param \Illuminate\Database\Eloquent\Collection $userPermissions
+     * @param int|string|array $permission
      * @return bool
      */
-    protected function canOne(array $permissions, Collection $userPermissions)
+    public function canOne($permission)
     {
-        foreach ($permissions as $permission) {
-            if ($this->hasPermission($permission, $userPermissions)) {
+        foreach ($this->getArrayFrom($permission) as $permission) {
+            if ($this->hasPermission($permission)) {
                 return true;
             }
         }
@@ -250,16 +224,15 @@ trait HasRoleAndPermission
     }
 
     /**
-     * Check if the user has all provided permissions.
+     * Check if the user has all permissions.
      *
-     * @param array $permissions
-     * @param \Illuminate\Database\Eloquent\Collection $userPermissions
+     * @param int|string|array $permission
      * @return bool
      */
-    protected function canAll(array $permissions, Collection $userPermissions)
+    public function canAll($permission)
     {
-        foreach ($permissions as $permission) {
-            if (!$this->hasPermission($permission, $userPermissions)) {
+        foreach ($this->getArrayFrom($permission) as $permission) {
+            if (!$this->hasPermission($permission)) {
                 return false;
             }
         }
@@ -268,33 +241,28 @@ trait HasRoleAndPermission
     }
 
     /**
-     * Check if the user has a provided permission.
+     * Check if the user has a permission.
      *
-     * @param int|string $providedPermission
-     * @param \Illuminate\Database\Eloquent\Collection $userPermissions
+     * @param int|string $permission
      * @return bool
      */
-    protected function hasPermission($providedPermission, Collection $userPermissions)
+    public function hasPermission($permission)
     {
-        foreach ($userPermissions as $permission) {
-            if ($permission->id == $providedPermission || str_is($providedPermission, $permission->slug)) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->getPermissions()->contains(function ($key, $value) use ($permission) {
+            return $permission == $value->id || Str::is($permission, $value->slug);
+        });
     }
 
     /**
      * Check if the user is allowed to manipulate with entity.
      *
      * @param string $providedPermission
-     * @param object $entity
+     * @param \Illuminate\Database\Eloquent\Model $entity
      * @param bool $owner
      * @param string $ownerColumn
      * @return bool
      */
-    public function allowed($providedPermission, $entity, $owner = true, $ownerColumn = 'user_id')
+    public function allowed($providedPermission, Model $entity, $owner = true, $ownerColumn = 'user_id')
     {
         if ($this->isPretendEnabled()) {
             return $this->pretend('allowed');
@@ -304,8 +272,22 @@ trait HasRoleAndPermission
             return true;
         }
 
-        foreach ($this->permissions() as $permission) {
-            if ($permission->model != '' && get_class($entity) == $permission->model && ($permission->id == $providedPermission || $permission->slug === $providedPermission)) {
+        return $this->isAllowed($providedPermission, $entity);
+    }
+
+    /**
+     * Check if the user is allowed to manipulate with provided entity.
+     *
+     * @param string $providedPermission
+     * @param \Illuminate\Database\Eloquent\Model $entity
+     * @return bool
+     */
+    protected function isAllowed($providedPermission, Model $entity)
+    {
+        foreach ($this->getPermissions() as $permission) {
+            if ($permission->model != '' && get_class($entity) == $permission->model
+                && ($permission->id == $providedPermission || $permission->slug === $providedPermission)
+            ) {
                 return true;
             }
         }
@@ -314,92 +296,88 @@ trait HasRoleAndPermission
     }
 
     /**
-     * Attach permission.
+     * Attach permission to a user.
      *
      * @param int|\Bican\Roles\Models\Permission $permission
-     * @return mixed
+     * @return null|bool
      */
     public function attachPermission($permission)
     {
-        if (!$this->userPermissions()->get()->contains($permission)) {
-            return $this->userPermissions()->attach($permission);
-        }
-
-        return true;
+        return (!$this->getPermissions()->contains($permission)) ? $this->userPermissions()->attach($permission) : true;
     }
 
     /**
-     * Detach permission.
+     * Detach permission from a user.
      *
      * @param int|\Bican\Roles\Models\Permission $permission
-     * @return mixed
+     * @return int
      */
     public function detachPermission($permission)
     {
+        $this->permissions = null;
+
         return $this->userPermissions()->detach($permission);
     }
 
     /**
-     * Detach all permissions.
+     * Detach all permissions from a user.
      *
      * @return int
      */
     public function detachAllPermissions()
     {
+        $this->permissions = null;
+        
         return $this->userPermissions()->detach();
     }
 
     /**
      * Check if pretend option is enabled.
      *
-     * @return boolean
+     * @return bool
      */
     private function isPretendEnabled()
     {
-        return (bool) Config::get('roles.pretend.enabled');
+        return (bool) config('roles.pretend.enabled');
     }
 
     /**
      * Allows to pretend or simulate package behavior.
      *
      * @param string $option
-     * @return boolean
+     * @return bool
      */
-    private function pretend($option = null)
+    private function pretend($option)
     {
-        return (bool) Config::get('roles.pretend.options.' . $option);
+        return (bool) config('roles.pretend.options.' . $option);
     }
 
     /**
-     * Get an array from provided parameter.
-     *
-     * @param int|string|array $value
-     * @return array
-     */
-    private function getArrayFrom($value)
-    {
-        if (!is_array($value)) {
-            return preg_split('/ ?[,|] ?/', $value);
-        }
-
-        return $value;
-    }
-
-    /**
-     * Check methodName argument.
+     * Get method name.
      *
      * @param string $methodName
-     * @return mixed
-     * @throws \Bican\Roles\Exceptions\InvalidArgumentException
+     * @param bool $all
+     * @return string
      */
-    private function checkMethodNameArgument($methodName)
+    private function getMethodName($methodName, $all)
     {
-        if (ucwords($methodName) != 'One' && ucwords($methodName) != 'All') {
-            throw new InvalidArgumentException('You can pass only strings [one] or [all] as a second parameter in [is] or [can] method.');
-        }
+        return ((bool) $all) ? $methodName . 'All' : $methodName . 'One';
     }
 
     /**
+     * Get an array from argument.
+     *
+     * @param int|string|array $argument
+     * @return array
+     */
+    private function getArrayFrom($argument)
+    {
+        return (!is_array($argument)) ? preg_split('/ ?[,|] ?/', $argument) : $argument;
+    }
+
+    /**
+     * Handle dynamic method calls.
+     *
      * @param string $method
      * @param array $parameters
      * @return mixed
@@ -407,23 +385,11 @@ trait HasRoleAndPermission
     public function __call($method, $parameters)
     {
         if (starts_with($method, 'is')) {
-            if ($this->is(snake_case(substr($method, 2), Config::get('roles.separator')))) {
-                return true;
-            }
-
-            return false;
+            return $this->is(snake_case(substr($method, 2), config('roles.separator')));
         } elseif (starts_with($method, 'can')) {
-            if ($this->can(snake_case(substr($method, 3), Config::get('roles.separator')))) {
-                return true;
-            }
-
-            return false;
+            return $this->can(snake_case(substr($method, 3), config('roles.separator')));
         } elseif (starts_with($method, 'allowed')) {
-            if ($this->allowed(snake_case(substr($method, 7), Config::get('roles.separator')), $parameters[0], (isset($parameters[1])) ? $parameters[1] : true, (isset($parameters[2])) ? $parameters[2] : 'user_id')) {
-                return true;
-            }
-
-            return false;
+            return $this->allowed(snake_case(substr($method, 7), config('roles.separator')), $parameters[0], (isset($parameters[1])) ? $parameters[1] : true, (isset($parameters[2])) ? $parameters[2] : 'user_id');
         }
 
         return parent::__call($method, $parameters);

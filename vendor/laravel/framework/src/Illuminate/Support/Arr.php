@@ -1,390 +1,419 @@
-<?php namespace Illuminate\Support;
+<?php
+
+namespace Illuminate\Support;
 
 use Illuminate\Support\Traits\Macroable;
 
-class Arr {
+class Arr
+{
+    use Macroable;
 
-	use Macroable;
+    /**
+     * Add an element to an array using "dot" notation if it doesn't exist.
+     *
+     * @param  array   $array
+     * @param  string  $key
+     * @param  mixed   $value
+     * @return array
+     */
+    public static function add($array, $key, $value)
+    {
+        if (is_null(static::get($array, $key))) {
+            static::set($array, $key, $value);
+        }
 
-	/**
-	 * Add an element to an array using "dot" notation if it doesn't exist.
-	 *
-	 * @param  array   $array
-	 * @param  string  $key
-	 * @param  mixed   $value
-	 * @return array
-	 */
-	public static function add($array, $key, $value)
-	{
-		if (is_null(static::get($array, $key)))
-		{
-			static::set($array, $key, $value);
-		}
+        return $array;
+    }
 
-		return $array;
-	}
+    /**
+     * Build a new array using a callback.
+     *
+     * @param  array  $array
+     * @param  callable  $callback
+     * @return array
+     */
+    public static function build($array, callable $callback)
+    {
+        $results = [];
 
-	/**
-	 * Build a new array using a callback.
-	 *
-	 * @param  array  $array
-	 * @param  callable  $callback
-	 * @return array
-	 */
-	public static function build($array, callable $callback)
-	{
-		$results = [];
+        foreach ($array as $key => $value) {
+            list($innerKey, $innerValue) = call_user_func($callback, $key, $value);
 
-		foreach ($array as $key => $value)
-		{
-			list($innerKey, $innerValue) = call_user_func($callback, $key, $value);
+            $results[$innerKey] = $innerValue;
+        }
 
-			$results[$innerKey] = $innerValue;
-		}
+        return $results;
+    }
 
-		return $results;
-	}
+    /**
+     * Collapse an array of arrays into a single array.
+     *
+     * @param  array|\ArrayAccess  $array
+     * @return array
+     */
+    public static function collapse($array)
+    {
+        $results = [];
 
-	/**
-	 * Divide an array into two arrays. One with keys and the other with values.
-	 *
-	 * @param  array  $array
-	 * @return array
-	 */
-	public static function divide($array)
-	{
-		return [array_keys($array), array_values($array)];
-	}
+        foreach ($array as $values) {
+            if ($values instanceof Collection) {
+                $values = $values->all();
+            }
 
-	/**
-	 * Flatten a multi-dimensional associative array with dots.
-	 *
-	 * @param  array   $array
-	 * @param  string  $prepend
-	 * @return array
-	 */
-	public static function dot($array, $prepend = '')
-	{
-		$results = [];
+            $results = array_merge($results, $values);
+        }
 
-		foreach ($array as $key => $value)
-		{
-			if (is_array($value))
-			{
-				$results = array_merge($results, static::dot($value, $prepend.$key.'.'));
-			}
-			else
-			{
-				$results[$prepend.$key] = $value;
-			}
-		}
+        return $results;
+    }
 
-		return $results;
-	}
+    /**
+     * Divide an array into two arrays. One with keys and the other with values.
+     *
+     * @param  array  $array
+     * @return array
+     */
+    public static function divide($array)
+    {
+        return [array_keys($array), array_values($array)];
+    }
 
-	/**
-	 * Get all of the given array except for a specified array of items.
-	 *
-	 * @param  array  $array
-	 * @param  array|string  $keys
-	 * @return array
-	 */
-	public static function except($array, $keys)
-	{
-		foreach ((array) $keys as $key)
-		{
-			static::forget($array, $key);
-		}
+    /**
+     * Flatten a multi-dimensional associative array with dots.
+     *
+     * @param  array   $array
+     * @param  string  $prepend
+     * @return array
+     */
+    public static function dot($array, $prepend = '')
+    {
+        $results = [];
 
-		return $array;
-	}
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $results = array_merge($results, static::dot($value, $prepend.$key.'.'));
+            } else {
+                $results[$prepend.$key] = $value;
+            }
+        }
 
-	/**
-	 * Fetch a flattened array of a nested array element.
-	 *
-	 * @param  array   $array
-	 * @param  string  $key
-	 * @return array
-	 */
-	public static function fetch($array, $key)
-	{
-		foreach (explode('.', $key) as $segment)
-		{
-			$results = [];
+        return $results;
+    }
 
-			foreach ($array as $value)
-			{
-				if (array_key_exists($segment, $value = (array) $value))
-				{
-					$results[] = $value[$segment];
-				}
-			}
+    /**
+     * Get all of the given array except for a specified array of items.
+     *
+     * @param  array  $array
+     * @param  array|string  $keys
+     * @return array
+     */
+    public static function except($array, $keys)
+    {
+        static::forget($array, $keys);
 
-			$array = array_values($results);
-		}
+        return $array;
+    }
 
-		return array_values($results);
-	}
+    /**
+     * Fetch a flattened array of a nested array element.
+     *
+     * @param  array   $array
+     * @param  string  $key
+     * @return array
+     *
+     * @deprecated since version 5.1. Use pluck instead.
+     */
+    public static function fetch($array, $key)
+    {
+        foreach (explode('.', $key) as $segment) {
+            $results = [];
 
-	/**
-	 * Return the first element in an array passing a given truth test.
-	 *
-	 * @param  array  $array
-	 * @param  callable  $callback
-	 * @param  mixed  $default
-	 * @return mixed
-	 */
-	public static function first($array, callable $callback, $default = null)
-	{
-		foreach ($array as $key => $value)
-		{
-			if (call_user_func($callback, $key, $value)) return $value;
-		}
+            foreach ($array as $value) {
+                if (array_key_exists($segment, $value = (array) $value)) {
+                    $results[] = $value[$segment];
+                }
+            }
 
-		return value($default);
-	}
+            $array = array_values($results);
+        }
 
-	/**
-	 * Return the last element in an array passing a given truth test.
-	 *
-	 * @param  array  $array
-	 * @param  callable  $callback
-	 * @param  mixed  $default
-	 * @return mixed
-	 */
-	public static function last($array, callable $callback, $default = null)
-	{
-		return static::first(array_reverse($array), $callback, $default);
-	}
+        return array_values($results);
+    }
 
-	/**
-	 * Flatten a multi-dimensional array into a single level.
-	 *
-	 * @param  array  $array
-	 * @return array
-	 */
-	public static function flatten($array)
-	{
-		$return = [];
+    /**
+     * Return the first element in an array passing a given truth test.
+     *
+     * @param  array  $array
+     * @param  callable  $callback
+     * @param  mixed  $default
+     * @return mixed
+     */
+    public static function first($array, callable $callback, $default = null)
+    {
+        foreach ($array as $key => $value) {
+            if (call_user_func($callback, $key, $value)) {
+                return $value;
+            }
+        }
 
-		array_walk_recursive($array, function($x) use (&$return) { $return[] = $x; });
+        return value($default);
+    }
 
-		return $return;
-	}
+    /**
+     * Return the last element in an array passing a given truth test.
+     *
+     * @param  array  $array
+     * @param  callable  $callback
+     * @param  mixed  $default
+     * @return mixed
+     */
+    public static function last($array, callable $callback, $default = null)
+    {
+        return static::first(array_reverse($array), $callback, $default);
+    }
 
-	/**
-	 * Remove one or many array items from a given array using "dot" notation.
-	 *
-	 * @param  array  $array
-	 * @param  array|string  $keys
-	 * @return void
-	 */
-	public static function forget(&$array, $keys)
-	{
-		$original =& $array;
+    /**
+     * Flatten a multi-dimensional array into a single level.
+     *
+     * @param  array  $array
+     * @return array
+     */
+    public static function flatten($array)
+    {
+        $return = [];
 
-		foreach ((array) $keys as $key)
-		{
-			$parts = explode('.', $key);
+        array_walk_recursive($array, function ($x) use (&$return) { $return[] = $x; });
 
-			while (count($parts) > 1)
-			{
-				$part = array_shift($parts);
+        return $return;
+    }
 
-				if (isset($array[$part]) && is_array($array[$part]))
-				{
-					$array =& $array[$part];
-				}
-			}
+    /**
+     * Remove one or many array items from a given array using "dot" notation.
+     *
+     * @param  array  $array
+     * @param  array|string  $keys
+     * @return void
+     */
+    public static function forget(&$array, $keys)
+    {
+        $original = &$array;
 
-			unset($array[array_shift($parts)]);
+        foreach ((array) $keys as $key) {
+            $parts = explode('.', $key);
 
-			// clean up after each pass
-			$array =& $original;
-		}
-	}
+            while (count($parts) > 1) {
+                $part = array_shift($parts);
 
-	/**
-	 * Get an item from an array using "dot" notation.
-	 *
-	 * @param  array   $array
-	 * @param  string  $key
-	 * @param  mixed   $default
-	 * @return mixed
-	 */
-	public static function get($array, $key, $default = null)
-	{
-		if (is_null($key)) return $array;
+                if (isset($array[$part]) && is_array($array[$part])) {
+                    $array = &$array[$part];
+                }
+            }
 
-		if (isset($array[$key])) return $array[$key];
+            unset($array[array_shift($parts)]);
 
-		foreach (explode('.', $key) as $segment)
-		{
-			if ( ! is_array($array) || ! array_key_exists($segment, $array))
-			{
-				return value($default);
-			}
+            // clean up after each pass
+            $array = &$original;
+        }
+    }
 
-			$array = $array[$segment];
-		}
+    /**
+     * Get an item from an array using "dot" notation.
+     *
+     * @param  array   $array
+     * @param  string  $key
+     * @param  mixed   $default
+     * @return mixed
+     */
+    public static function get($array, $key, $default = null)
+    {
+        if (is_null($key)) {
+            return $array;
+        }
 
-		return $array;
-	}
+        if (isset($array[$key])) {
+            return $array[$key];
+        }
 
-	/**
-	 * Check if an item exists in an array using "dot" notation.
-	 *
-	 * @param  array   $array
-	 * @param  string  $key
-	 * @return bool
-	 */
-	public static function has($array, $key)
-	{
-		if (empty($array) || is_null($key)) return false;
+        foreach (explode('.', $key) as $segment) {
+            if (!is_array($array) || !array_key_exists($segment, $array)) {
+                return value($default);
+            }
 
-		if (array_key_exists($key, $array)) return true;
+            $array = $array[$segment];
+        }
 
-		foreach (explode('.', $key) as $segment)
-		{
-			if ( ! is_array($array) || ! array_key_exists($segment, $array))
-			{
-				return false;
-			}
+        return $array;
+    }
 
-			$array = $array[$segment];
-		}
+    /**
+     * Check if an item exists in an array using "dot" notation.
+     *
+     * @param  array   $array
+     * @param  string  $key
+     * @return bool
+     */
+    public static function has($array, $key)
+    {
+        if (empty($array) || is_null($key)) {
+            return false;
+        }
 
-		return true;
-	}
+        if (array_key_exists($key, $array)) {
+            return true;
+        }
 
-	/**
-	 * Get a subset of the items from the given array.
-	 *
-	 * @param  array  $array
-	 * @param  array|string  $keys
-	 * @return array
-	 */
-	public static function only($array, $keys)
-	{
-		return array_intersect_key($array, array_flip((array) $keys));
-	}
+        foreach (explode('.', $key) as $segment) {
+            if (!is_array($array) || !array_key_exists($segment, $array)) {
+                return false;
+            }
 
-	/**
-	 * Pluck an array of values from an array.
-	 *
-	 * @param  array   $array
-	 * @param  string  $value
-	 * @param  string  $key
-	 * @return array
-	 */
-	public static function pluck($array, $value, $key = null)
-	{
-		$results = [];
+            $array = $array[$segment];
+        }
 
-		foreach ($array as $item)
-		{
-			$itemValue = data_get($item, $value);
+        return true;
+    }
 
-			// If the key is "null", we will just append the value to the array and keep
-			// looping. Otherwise we will key the array using the value of the key we
-			// received from the developer. Then we'll return the final array form.
-			if (is_null($key))
-			{
-				$results[] = $itemValue;
-			}
-			else
-			{
-				$itemKey = data_get($item, $key);
+    /**
+     * Get a subset of the items from the given array.
+     *
+     * @param  array  $array
+     * @param  array|string  $keys
+     * @return array
+     */
+    public static function only($array, $keys)
+    {
+        return array_intersect_key($array, array_flip((array) $keys));
+    }
 
-				$results[$itemKey] = $itemValue;
-			}
-		}
+    /**
+     * Pluck an array of values from an array.
+     *
+     * @param  array   $array
+     * @param  string|array  $value
+     * @param  string|array|null  $key
+     * @return array
+     */
+    public static function pluck($array, $value, $key = null)
+    {
+        $results = [];
 
-		return $results;
-	}
+        list($value, $key) = static::explodePluckParameters($value, $key);
 
-	/**
-	 * Get a value from the array, and remove it.
-	 *
-	 * @param  array   $array
-	 * @param  string  $key
-	 * @param  mixed   $default
-	 * @return mixed
-	 */
-	public static function pull(&$array, $key, $default = null)
-	{
-		$value = static::get($array, $key, $default);
+        foreach ($array as $item) {
+            $itemValue = data_get($item, $value);
 
-		static::forget($array, $key);
+            // If the key is "null", we will just append the value to the array and keep
+            // looping. Otherwise we will key the array using the value of the key we
+            // received from the developer. Then we'll return the final array form.
+            if (is_null($key)) {
+                $results[] = $itemValue;
+            } else {
+                $itemKey = data_get($item, $key);
 
-		return $value;
-	}
+                $results[$itemKey] = $itemValue;
+            }
+        }
 
-	/**
-	 * Set an array item to a given value using "dot" notation.
-	 *
-	 * If no key is given to the method, the entire array will be replaced.
-	 *
-	 * @param  array   $array
-	 * @param  string  $key
-	 * @param  mixed   $value
-	 * @return array
-	 */
-	public static function set(&$array, $key, $value)
-	{
-		if (is_null($key)) return $array = $value;
+        return $results;
+    }
 
-		$keys = explode('.', $key);
+    /**
+     * Explode the "value" and "key" arguments passed to "pluck".
+     *
+     * @param  string|array  $value
+     * @param  string|array|null  $key
+     * @return array
+     */
+    protected static function explodePluckParameters($value, $key)
+    {
+        $value = is_array($value) ? $value : explode('.', $value);
 
-		while (count($keys) > 1)
-		{
-			$key = array_shift($keys);
+        $key = is_null($key) || is_array($key) ? $key : explode('.', $key);
 
-			// If the key doesn't exist at this depth, we will just create an empty array
-			// to hold the next value, allowing us to create the arrays to hold final
-			// values at the correct depth. Then we'll keep digging into the array.
-			if ( ! isset($array[$key]) || ! is_array($array[$key]))
-			{
-				$array[$key] = [];
-			}
+        return [$value, $key];
+    }
 
-			$array =& $array[$key];
-		}
+    /**
+     * Get a value from the array, and remove it.
+     *
+     * @param  array   $array
+     * @param  string  $key
+     * @param  mixed   $default
+     * @return mixed
+     */
+    public static function pull(&$array, $key, $default = null)
+    {
+        $value = static::get($array, $key, $default);
 
-		$array[array_shift($keys)] = $value;
+        static::forget($array, $key);
 
-		return $array;
-	}
+        return $value;
+    }
 
-	/**
-	 * Sort the array using the given callback.
-	 *
-	 * @param  array  $array
-	 * @param  callable  $callback
-	 * @return array
-	 */
-	public static function sort($array, callable $callback)
-	{
-		return Collection::make($array)->sortBy($callback)->all();
-	}
+    /**
+     * Set an array item to a given value using "dot" notation.
+     *
+     * If no key is given to the method, the entire array will be replaced.
+     *
+     * @param  array   $array
+     * @param  string  $key
+     * @param  mixed   $value
+     * @return array
+     */
+    public static function set(&$array, $key, $value)
+    {
+        if (is_null($key)) {
+            return $array = $value;
+        }
 
-	/**
-	 * Filter the array using the given callback.
-	 *
-	 * @param  array  $array
-	 * @param  callable  $callback
-	 * @return array
-	 */
-	public static function where($array, callable $callback)
-	{
-		$filtered = [];
+        $keys = explode('.', $key);
 
-		foreach ($array as $key => $value)
-		{
-			if (call_user_func($callback, $key, $value)) $filtered[$key] = $value;
-		}
+        while (count($keys) > 1) {
+            $key = array_shift($keys);
 
-		return $filtered;
-	}
+            // If the key doesn't exist at this depth, we will just create an empty array
+            // to hold the next value, allowing us to create the arrays to hold final
+            // values at the correct depth. Then we'll keep digging into the array.
+            if (!isset($array[$key]) || !is_array($array[$key])) {
+                $array[$key] = [];
+            }
 
+            $array = &$array[$key];
+        }
+
+        $array[array_shift($keys)] = $value;
+
+        return $array;
+    }
+
+    /**
+     * Sort the array using the given callback.
+     *
+     * @param  array  $array
+     * @param  callable  $callback
+     * @return array
+     */
+    public static function sort($array, callable $callback)
+    {
+        return Collection::make($array)->sortBy($callback)->all();
+    }
+
+    /**
+     * Filter the array using the given callback.
+     *
+     * @param  array  $array
+     * @param  callable  $callback
+     * @return array
+     */
+    public static function where($array, callable $callback)
+    {
+        $filtered = [];
+
+        foreach ($array as $key => $value) {
+            if (call_user_func($callback, $key, $value)) {
+                $filtered[$key] = $value;
+            }
+        }
+
+        return $filtered;
+    }
 }

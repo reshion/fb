@@ -34,6 +34,10 @@ class HomeController extends Controller {
 	{
 		return view('home');
 	}
+
+	public function loadTemplate($path) {
+		return view($path);
+	}
         
         
     }

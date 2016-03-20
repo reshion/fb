@@ -12,63 +12,63 @@
 
 
     <div id="panel-2" class="panel-body collapse in">
-        <h1>Standort: {{weather.getCityName()}} <img ng-src="{{weather.getIcon()}}" /></h1>
+        <h1 data-ng-bind="'Standort: ' + (weather.getCityName())"> <img ng-src="[[weather.getIcon()]]" /></h1>
         <table class="table">
             <tr>
                 <td>Temperatur </td>
-                <td>{{weather.getTemperature()}} &deg;C</td>
+                <td>[[weather.getTemperature()]] &deg;C</td>
             </tr>
             <tr>
                 <td>Min </td>
-                <td>{{weather.getMinTemperature()}} &deg;C</td>
+                <td>[[weather.getMinTemperature()]] &deg;C</td>
             </tr>
             <tr>
                 <td>Max </td>
-                <td>{{weather.getMaxTemperature()}} &deg;C</td>
+                <td>[[weather.getMaxTemperature()]] &deg;C</td>
             </tr>
             <tr>
                 <td>Luftfeuchtigkeit </td>
-                <td>{{weather.getHumidity()}} &#037;</td>
+                <td>[[weather.getHumidity()]] &#037;</td>
             </tr>
             <tr>
                 <td>Luftdruck </td>
-                <td>{{weather.getPressure()}} hPa</td>
+                <td>[[weather.getPressure()]] hPa</td>
             </tr>
             <tr>
                 <td>Luftdruck (Meeresspiegel)</td>
-                <td>{{weather.getPressureSeaLevel()}} hPa</td>
+                <td>[[weather.getPressureSeaLevel()]] hPa</td>
             </tr>
             <tr>
                 <td>Luftdruck (Boden)</td>
-                <td>{{weather.getPressureGroundLevel()}} hPa</td>
+                <td>[[weather.getPressureGroundLevel()]] hPa</td>
             </tr>
             <tr>
                 <td>Windgeschwindigkeit</td>
-                <td>{{weather.getWindSpeed()}} m/s</td>
+                <td>[[weather.getWindSpeed()]] m/s</td>
             </tr>
             <tr>
                 <td>Windböhen</td>
-                <td>{{weather.getWindGust()}} m/s</td>
+                <td>[[weather.getWindGust()]] m/s</td>
             </tr>
             <tr>
                 <td>Windrichtung</td>
-                <td>{{weather.getWindDirection()}} &deg;C</td>
+                <td>[[weather.getWindDirection()]] &deg;C</td>
             </tr>
             <tr>
                 <td>Regen (letzten 3h)</td>
-                <td>{{weather.getRain3h()}} mm</td>
+                <td>[[weather.getRain3h()]] mm</td>
             </tr>
             <tr>
                 <td>Schnee (letzten 3h)</td>
-                <td>{{weather.getSnow3h()}} mm</td>
+                <td>[[weather.getSnow3h()]] mm</td>
             </tr>
             <tr>
                 <td>Sonnenaufgang</td>
-                <td>{{weather.getSunrise() | date:'HH:mm:ss'}} Uhr </td>
+                <td>[[weather.getSunrise() | date:'HH:mm:ss']] Uhr </td>
             </tr>
             <tr>
                 <td>Sonnenuntergang</td>
-                <td>{{weather.getSunset() | date:'HH:mm:ss'}} Uhr </td>
+                <td>[[weather.getSunset() | date:'HH:mm:ss']] Uhr </td>
             </tr>
             
         </table>

@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" >
     <div class="row">
    	
 		<geo-location class="col-lg-12 col-xs-12 no-padding" id="geolocation1"  data-loading="loading" data-interncoords="coords"></geo-location>

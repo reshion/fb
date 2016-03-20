@@ -12,10 +12,14 @@
  */
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::group(['prefix' => 'home'], function() {
+    Route::get('/', 'HomeController@index');
+    Route::get('/template/{path}', 'HomeController@loadTemplate');
+
+} );
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'user'], function () {
-        Route::get('/', 'UserController@index');
+        Route::get('/', 'UserController@userList');
         Route::get('edit/{id}', 'UserController@edit');
         Route::post('update', 'UserController@update');
     });
@@ -27,7 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'catch'], function () {
         Route::get('/', 'CatchController@index');
         Route::post('create', 'CatchController@create');
-        Route::get('create', 'CatchController@create');
+        Route::get('list', 'CatchController@catchList');
+        Route::get('edit/{id}', 'CatchController@edit');
+        Route::get('show/{id}', 'CatchController@show');
     });
     Route::group(['prefix' => 'heatmap'], function () {
         Route::get('load', 'CatchController@heatmap');

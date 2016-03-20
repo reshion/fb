@@ -2,7 +2,7 @@ angular.module('heatmapService', [])
     .value('apiEndpointHeatmap', 'heatmap/')
     .service('heatmapService', ['$http', '$q', 'apiEndpointHeatmap', function($http, $q, apiEndpointHeatmap) {
 
-        function coordLoader(data) {
+        function responser(data) {
             this.data = data;
             this.getCoords = function() {
                 return this.data.data.Coordlist ? this.data.data.Coordlist : [];
@@ -18,7 +18,7 @@ angular.module('heatmapService', [])
             }
             $http(req).
             then(function(response) {
-                deferred.resolve(new coordLoader(response));
+                deferred.resolve(new responser(response));
             }, function (error) {
                 deferred.reject(error);
 

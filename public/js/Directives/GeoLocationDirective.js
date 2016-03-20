@@ -1,16 +1,17 @@
-app.directive('geoLocation', function($window, $rootScope, locationService, $aside) {
+app.directive('geoLocation', function($window, $rootScope, locationService, $aside,publicPath) {
     return {
         restrict: "E",
-        templateUrl: 'templates/GeoLocation.html',
+        templateUrl:  publicPath + '/templates/GeoLocation.html',
         scope: {
             internCoords: '=interncoords',
             internLoading: '=loading',
-            height: '=height'
+            height: '=height',
+            autoload: '=autoload',
         },
         link: function(scope, element, attrs) {
             scope.canvasID = "map-canvas-" + attrs.id;
             scope.canvasHeight = scope.height;
-
+            scope.publicPath = publicPath;
             scope.id = attrs.id
 
             console.log(scope.canvasID);
@@ -19,8 +20,27 @@ app.directive('geoLocation', function($window, $rootScope, locationService, $asi
                 scope.getLocation();
             }
 
-            
+            //scope.getPath = function() {
+            //    return 'http://localhost/fishbook/public/templates/GeoLocationInfo.html';
+            //}
+            scope.showInfo = function() {
+                var Info = $aside({
+                    scope: scope,
+                    template: publicPath + '/templates/GeoLocationInfo.html',
+                    container: '#info-' + scope.id + '-panel',
+                    html: true,
+                    //contentTemplate: publicPath + '/templates/GeoLocationInfo.html',
+
+                });
+                console.log(Info);
+                // Show when some event occurs (use $promise property to ensure the template has been loaded)
+                Info.$promise.then(function() {
+                    Info.show();
+                })
+            }
+
             scope.getLocation = function() {
+
                 // set loading true by key
                 scope.internLoading.push('geoKey');
                 p = locationService.getLocation();
@@ -49,9 +69,12 @@ app.directive('geoLocation', function($window, $rootScope, locationService, $asi
 
             scope.setLocation = function(data) {
                 // remove loading key
-                var position = data
-                scope.internCoords.lng = position.coords.longitude;
-                scope.internCoords.lat = position.coords.latitude;
+
+                    var position = data
+                    scope.internCoords.lng = position.coords.longitude;
+                    scope.internCoords.lat = position.coords.latitude;
+
+
                 scope.createMap();
                 
             }
@@ -60,7 +83,7 @@ app.directive('geoLocation', function($window, $rootScope, locationService, $asi
             scope.createMap = function() {
             console.log(scope.canvasID);
                 scope.newLatLng = new google.maps.LatLng(scope.internCoords.lat, scope.internCoords.lng)
-                //document.getElementById(scope.canvasID).style.height = scope.canvasHeight + "px";
+                document.getElementById(scope.canvasID).style.height = "200px";
                 map = new google.maps.Map(document.getElementById(scope.canvasID), mapOptions);
 
                 var marker = new google.maps.Marker({

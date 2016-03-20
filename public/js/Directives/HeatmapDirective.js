@@ -1,11 +1,11 @@
 angular.module('heatmapDirective', [])
-    .directive('heatMap', ['heatmapService', function (heatmapService) {
+    .directive('heatMap', ['heatmapService','publicPath', function (heatmapService,publicPath) {
         return {
             scope: {
                 internHeight: "=heatmapHeight"
 
             },
-            templateUrl: 'templates/Heatmap.html',
+            templateUrl: publicPath + '/templates/Heatmap.html',
             link: function(scope, element, attrs) {
                 heatmapScope = scope;
                 scope.id = attrs.id;
@@ -13,7 +13,6 @@ angular.module('heatmapDirective', [])
                 scope.heatmap;
 
                 scope.prepareMap = function(coords) {
-                    console.log(coords);
                     var lat, lng;
                     lat = coords.length > 0 ? coords[0].lat : 51;
                     lng = coords.length > 0 ? coords[0].lng : 13;

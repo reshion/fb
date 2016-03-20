@@ -1,4 +1,4 @@
-<div class="aside">
+<div class="aside" >
         <div class="aside-dialog">
                 <div class="aside-content">
                         <div class="aside-header">
@@ -6,9 +6,9 @@
                                 <button type="button" class="close" ng-click="$hide()">×</button>
                         </div>
                         <div class="aside-body">
-                                <div class="panel panel-default col-lg-6 col-xs-12">
+                                <div class="panel panel-default col-lg-12 col-xs-12">
                                         <div class="panel-heading action col-lg-6 col-xs-6"
-                                             data-target="#panel-{{id}}"
+                                             data-target="#panel-[[id]]"
                                              data-toggle="collapse"
                                              aria-expanded="false">
                                                 Position
@@ -26,9 +26,9 @@
                                                 <!--<div class="pull-right action" data-html="true" data-placement="left"  data-animation="am-slide-left" bs-aside="info" >-->
                                                         <!--<span class="glyphicon glyphicon-info-sign"  ></span>-->
                                         </div>
-                                        <div id="panel-{{id}}" class="panel-body collapse in">
+                                        <div id="panel-[[id]]" class="panel-body collapse in" data-ng-init="refreshPosition()">
                                                 <div id="map" class="coords-block">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 map-canvas"  id="map-canvas-{{id}}"></div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 map-canvas"  id="map-canvas-[[id]]"></div>
                                                         <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 map-canvas"  ></div>-->
                                                 </div>
                                         </div>

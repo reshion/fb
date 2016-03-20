@@ -2,7 +2,6 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-	<div class="">
 	    <h1>User</h1>
 	    <table class="table">
 		<thead>
@@ -25,7 +24,6 @@
 		</tbody>
 	    </table>
 	</div>
-    </div>
 </div>
 @endsection
 

@@ -1,5 +1,5 @@
 angular.module('waterDirective', [])
-        .directive('waterInfo', ['waterService', function(waterService) {
+        .directive('waterInfo', ['waterService','publicPath', function(waterService,publicPath) {
                 return {
                     scope: {
                         internCoords: '=interncoords',
@@ -7,7 +7,7 @@ angular.module('waterDirective', [])
                         internRadius: '=internradius'
 
                     },
-                    templateUrl: 'templates/Water.html',
+                    templateUrl: publicPath + '/templates/Water.html',
                     link: function(scope, element, attrs) {
 
                         scope.getWaterInfo = function() {

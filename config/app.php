@@ -135,8 +135,9 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-            
-                'Bican\Roles\RolesServiceProvider',
+		'Illuminate\Broadcasting\BroadcastServiceProvider',
+		'Bican\Roles\RolesServiceProvider',
+
 
 		/*
 		 * Application Service Providers...

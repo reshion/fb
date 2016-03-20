@@ -15,9 +15,9 @@ use Request;
 
         public function __construct ()
             {
-            $this->middleware ('auth');
-//            $this->middleware ('group', ['group' => ['admin']]);
-            $this->middleware ('group');
+
+                $this->middleware('permission:list.users', ['only' => ['userList']]);
+                $this->middleware('permission:edit.users', ['only' => ['edit', 'update']]);
             }
 
         /**
@@ -25,46 +25,11 @@ use Request;
          *
          * @return Response
          */
-        public function index ()
+        public function userList ()
             {
-            $user = Auth::user ();
-            if (!$user->is ('admin'))
-                {
-                return redirect ('home');
-                }
-            return view ('be/user/list', array ("users" => User::all ()));
+                return view ('be/user/list', array ("users" => User::all ()));
             }
 
-        /**
-         * Show the form for creating a new resource.
-         *
-         * @return Response
-         */
-        public function create ()
-            {
-            //
-            }
-
-        /**
-         * Store a newly created resource in storage.
-         *
-         * @return Response
-         */
-        public function store ()
-            {
-            //
-            }
-
-        /**
-         * Display the specified resource.
-         *
-         * @param  int  $id
-         * @return Response
-         */
-        public function show ($id)
-            {
-            //
-            }
 
         /**
          * Show the form for editing the specified resource.
@@ -74,8 +39,6 @@ use Request;
          */
         public function edit ($id)
             {
-            $user = User::find ($id);
-            $test = $user->level ();
             return view ('be/user/edit', array ("user" => User::find ($id)));
             }
 
@@ -94,16 +57,7 @@ use Request;
             return view ('be/user/edit', array ("user" => $user));
             }
 
-        /**
-         * Remove the specified resource from storage.
-         *
-         * @param  int  $id
-         * @return Response
-         */
-        public function destroy ($id)
-            {
-            //
-            }
+
 
         }
     

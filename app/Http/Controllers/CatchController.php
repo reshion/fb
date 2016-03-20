@@ -23,12 +23,18 @@ class CatchController extends Controller {
 	 */
 	public function index()
 	{
-		$user = Auth::user ();
-		if (!$user->is ('admin') && !$user->is ('user'))
-		{
-			return redirect ('home');
-		}
 		return view ('be/catch/catch');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function catchList()
+	{
+		$User = Auth::user();
+		return view ('be/catch/list', array('catchList' => $User->captures));
 	}
 
 	/**
@@ -39,21 +45,19 @@ class CatchController extends Controller {
 	public function create()
 	{
 		$User = Auth::user ();
-		if (!$User->is ('admin') && !$User->is ('user'))
-		{
-			return redirect ('home');
-		}
+
 		$data	 = Request::input();
 
-		$Capture = new Capture;
-		$Capture->species = $data['fish']['species']['value'];
-		$Capture->length = $data['fish']['length']['value'];
-		$Capture->extent = $data['fish']['extent']['value'];
-		$Capture->weight = $data['fish']['weight']['value'];
-		$Capture->coords = json_encode($data['coords']);
-		$Capture->weather = json_encode($data['weather']);
-		$Capture->user_id = $User->id;
-		$Capture->save();
+		$Capture = new Capture([
+			'species' => $data['fish']['species']['value'],
+			'length' => $data['fish']['length']['value'],
+			'extent' => $data['fish']['extent']['value'],
+			'weight' => $data['fish']['weight']['value'],
+			'coords' => json_encode($data['coords']),
+			'weather' => json_encode($data['weather']),
+		]);
+
+		$User->captures()->save($Capture);
 
 		return Response::json(['data' => array('message' => 'Erfolgreich gespeichert.', 'log' => json_encode($data) , 'redirecturl' => '/')]);
 	}
@@ -62,8 +66,7 @@ class CatchController extends Controller {
 
 		$CoordList = array();
 		$User = Auth::user();
-		$Captures = Capture::where('user_id', $User->id)->get();
-		foreach($Captures as $Capture) {
+		foreach($User->captures as $Capture) {
 			if($Capture->coords != '') {
 				$CoordList[] = json_decode($Capture->coords);
 			}
@@ -91,7 +94,7 @@ class CatchController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		return Response::json(['Capture' => Capture::where('id', $id)->get()]);
 	}
 
 	/**
@@ -102,7 +105,9 @@ class CatchController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$capture = Capture::where('id', $id)->get();
+		$User = Auth::user();
+		return view ('be/catch/list', array('catchList' => $User->captures));
 	}
 
 	/**

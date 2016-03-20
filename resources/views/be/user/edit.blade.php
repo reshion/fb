@@ -16,6 +16,7 @@
 		<input type="hidden" name="id" value="{{$user->id}}">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<button class="btn btn-success">save</button>
+		<a class="btn btn-info pull-right" href="{{ URL::previous() }}">Back</a>
 	    </form>
 	</div>
     </div>

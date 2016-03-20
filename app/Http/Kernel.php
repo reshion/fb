@@ -27,7 +27,11 @@ class Kernel extends HttpKernel {
 		'auth' => 'App\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
-		'group' => 'App\Http\Middleware\GroupMiddleware',
+		'user.editor' => 'App\Http\Middleware\UserEditor',
+
+		'role' => '\Bican\Roles\Middleware\VerifyRole',
+		'permission' => '\Bican\Roles\Middleware\VerifyPermission',
+		'level' => '\Bican\Roles\Middleware\VerifyLevel',
 	];
 
 }

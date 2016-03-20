@@ -6251,10 +6251,12 @@ and open the template in the editor.
     Created on : 19.06.2015, 18:19:03
     Author     : rico
 */
-html body #wrapper .content .aside {
+html body #wrapper .content .aside,
+html body #wrapper .content .modal {
   width: 100%;
 }
-html body #wrapper .content .aside-header {
+html body #wrapper .content .aside-header,
+html body #wrapper .content .modal-header {
   background-color: #323232;
 }
 .no-padding {
@@ -6281,22 +6283,34 @@ and open the template in the editor.
     Created on : 19.06.2015, 18:19:03
     Author     : rico
 */
-html body #wrapper .content .aside {
+html body #wrapper .content .aside,
+html body #wrapper .content .modal {
   width: 100%;
 }
-html body #wrapper .content .aside .aside-body {
+html body #wrapper .content .aside .aside-body,
+html body #wrapper .content .modal .aside-body,
+html body #wrapper .content .aside .modal-body,
+html body #wrapper .content .modal .modal-body {
   padding: 0px;
 }
-html body #wrapper .content .aside .panel-body {
+html body #wrapper .content .aside .panel-body,
+html body #wrapper .content .modal .panel-body {
   margin-top: 0px;
 }
-html body #wrapper .content .aside .panel-body .map-canvas {
+html body #wrapper .content .aside .panel-body .map-canvas,
+html body #wrapper .content .modal .panel-body .map-canvas {
   height: 400px;
 }
-html body #wrapper .content .aside .aside-header {
+html body #wrapper .content .aside .aside-header,
+html body #wrapper .content .modal .aside-header,
+html body #wrapper .content .aside .modal-header,
+html body #wrapper .content .modal .modal-header {
   background-color: #323232;
 }
-html body #wrapper .content .aside .aside-footer {
+html body #wrapper .content .aside .aside-footer,
+html body #wrapper .content .modal .aside-footer,
+html body #wrapper .content .aside .modal-footer,
+html body #wrapper .content .modal .modal-footer {
   padding: 0px;
 }
 .catch .panel-body {

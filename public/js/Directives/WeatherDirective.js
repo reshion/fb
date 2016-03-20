@@ -1,11 +1,11 @@
 angular.module('weatherDirective', [])
-        .directive('cityWeather', ['weatherService', 'waterService', function(weatherService, waterService) {
+        .directive('cityWeather', ['weatherService', 'publicPath', function(weatherService, publicPath) {
                 return {
                     scope: {
                         internCoords: '=interncoords',
                         internLoading: '=loading'
                     },
-                    templateUrl: 'templates/Weather.html',
+                    templateUrl: publicPath + '/templates/Weather.html',
                     link: function(scope, element, attrs) {
                         getWeather = function() {
                             scope.$watchCollection('internCoords', function() {
