@@ -62,7 +62,7 @@ class CatchController extends Controller {
 		return Response::json(['data' => array('message' => 'Erfolgreich gespeichert.', 'log' => json_encode($data) , 'redirecturl' => '/')]);
 	}
 
-	public function heatmap() {
+	public function loadHeatmap() {
 
 		$CoordList = array();
 		$User = Auth::user();
@@ -81,9 +81,9 @@ class CatchController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function showHeatmap()
 	{
-		//
+		return view ('be/heatmap/heatmap');
 	}
 
 	/**

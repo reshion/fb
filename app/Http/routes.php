@@ -36,7 +36,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('show/{id}', 'CatchController@show');
     });
     Route::group(['prefix' => 'heatmap'], function () {
-        Route::get('load', 'CatchController@heatmap');
+        Route::get('load', 'CatchController@loadHeatmap');
+        Route::get('heatmap', 'CatchController@showHeatmap');
     });
 });
 

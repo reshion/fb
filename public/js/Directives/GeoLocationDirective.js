@@ -82,8 +82,11 @@ app.directive('geoLocation', function($window, $rootScope, locationService, $asi
 
             scope.createMap = function() {
             console.log(scope.canvasID);
+
                 scope.newLatLng = new google.maps.LatLng(scope.internCoords.lat, scope.internCoords.lng)
+
                 document.getElementById(scope.canvasID).style.height = "200px";
+
                 map = new google.maps.Map(document.getElementById(scope.canvasID), mapOptions);
 
                 var marker = new google.maps.Marker({

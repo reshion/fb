@@ -1,6 +1,6 @@
 angular.module('heatmapService', [])
-    .value('apiEndpointHeatmap', 'heatmap/')
-    .service('heatmapService', ['$http', '$q', 'apiEndpointHeatmap', function($http, $q, apiEndpointHeatmap) {
+
+    .service('heatmapService', ['$http', '$q', 'publicPath', function($http, $q, publicPath) {
 
         function responser(data) {
             this.data = data;
@@ -14,7 +14,7 @@ angular.module('heatmapService', [])
             var deferred = $q.defer();
             var req = {
                 method: 'GET',
-                url: apiEndpointHeatmap + 'load'
+                url: publicPath + '/heatmap/load'
             }
             $http(req).
             then(function(response) {
